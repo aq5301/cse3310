@@ -120,8 +120,8 @@ public class AI {
         Point newCoord = new Point();
 
         while(grid[x][y] == 4){
-            x = ranPlace.nextInt(100);
-            y = ranPlace.nextInt(100);
+            x = ranPlace.nextInt(10);
+            y = ranPlace.nextInt(10);
         }
 
         newCoord.set(x,y);
