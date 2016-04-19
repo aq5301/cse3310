@@ -15,9 +15,11 @@ public class AI {
         int coordx, coordy, type, arrange;
         Ship current;
         Point newLoc;
+        Point [] allLoc = new Point[8];
+
         for(int run = 0; run < 8; run++){
-            coordx = ranPlace.nextInt(100);
-            coordy = ranPlace.nextInt(100);
+            coordx = ranPlace.nextInt(10);
+            coordy = ranPlace.nextInt(10);
             type = ranPlace.nextInt((4-1) + 1) + 1;
             arrange = ranPlace.nextInt(1);
             ships.add(new Ship(coordx, coordy, false, type, arrange));
@@ -29,6 +31,7 @@ public class AI {
         //ADD ERROR-CATCHING FOR OUT OF BOUNDS
         for(int run2 = 0; run2 < 8; run2++){
             current = ships.get(run2);
+            current.setCoordinates(allLoc);
             //single cell ship does not care about arrangement
             if(current.getType() == 1){
                if(AIgrid[current.getCenter().x][current.getCenter().y] == 4) {
@@ -36,6 +39,7 @@ public class AI {
                     current.setCenter(newLoc.x, newLoc.y);
                }
                 AIgrid[current.getCenter().x][current.getCenter().y] = 4;
+                current.getCoordinates()[0] = current.getCenter();
             }
 
             else
@@ -45,6 +49,30 @@ public class AI {
                     if(AIgrid[current.getCenter().x][current.getCenter().y] == 4) {
                         newLoc = newCoord(AIgrid, current.getCenter().x, current.getCenter().y);
                         current.setCenter(newLoc.x, newLoc.y);
+                    }
+                    AIgrid[current.getCenter().x][current.getCenter().y] = 4;
+                    if(AIgrid[current.getCenter().x + 1][current.getCenter().y] == 4 || (current.getCenter().x + 1) > 9) //check right
+                    {
+                        try{
+                            AIgrid[current.getCenter().x - 1][current.getCenter().y] = 4;
+                        }
+                        catch(ArrayIndexOutOfBoundsException e)
+                        {
+                            AIgrid[current.getCenter().x][current.getCenter().y] = 0;
+                            while(AIgrid[current.getCenter().x - 1][current.getCenter().y] == 4 || //if left goes on occupied spot
+                                    AIgrid[current.getCenter().x][current.getCenter().y] == 4  //if right/center goes on occupied spot
+                                    || AIgrid[current.getCenter().x][current.getCenter().y] <= 9){  //if right/center is out of bounds
+                                current.getCenter().set(current.getCenter().x + 1, current.getCenter().y);
+                            }
+                            AIgrid[current.getCenter().x][current.getCenter().y] = 4;
+                            AIgrid[current.getCenter().x - 1][current.getCenter().y] = 4;
+                            current.getCoordinates()[0] = current.getCenter();
+                            current.getCoordinates()[1].set(current.getCenter().x - 1,current.getCenter().y);
+                        }
+
+                    }
+                    else{
+                        AIgrid[current.getCenter().x + 1][current.getCenter().y] = 4;
                     }
                 }
                 else if(current.getType() == 3){
