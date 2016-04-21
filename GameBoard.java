@@ -14,7 +14,8 @@ public class GameBoard extends AppCompatActivity {
     final Globals globalInfo = (Globals) getApplication();
     //carry on PLAYER and COMPUTER matrices
 
-    int turn; // 0 for Player, 1 for AI
+    int turn,// 0 for Player, 1 for AI
+    playerMoves;
     Boolean ongoing = true; //true when a winner is declared
 
 

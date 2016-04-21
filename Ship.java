@@ -9,7 +9,7 @@ public class Ship {
 
     Point center;
     Point [] allCoord;
-    int type; // 1, 2, 3, 4- cells
+    int type; // 2, 3, 4- cells
     int arrange; // 0 = horizontal, 1 = vertical
     Boolean sunk;
 

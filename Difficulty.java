@@ -16,6 +16,7 @@ public class Difficulty extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_difficulty);
 
+        final Globals global = (Globals) getApplication();
 
         Button setMenu = (Button) findViewById(R.id.set3);
         Button setEasy = (Button) findViewById(R.id.easy);
@@ -32,21 +33,21 @@ public class Difficulty extends AppCompatActivity {
         setEasy.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                    //mode = "Easy";
+                   global.setDifficulty(0);
             }
         });
        setNorm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                    //mode = "Normal";
+                global.setDifficulty(1);
             }
         });
-        setHard.setOnClickListener(new View.OnClickListener() {
+        /*setHard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 //mode = "Hard";
             }
-        });
+        });*/
 
     }
 

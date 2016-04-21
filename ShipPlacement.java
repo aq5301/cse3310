@@ -31,6 +31,10 @@ public class ShipPlacement extends AppCompatActivity {
             when all ships are placed, the AI will place its ships randomly (RNG)
             continue to the game, player grid is shrunk, blank AI grid is revealed
         */
+
+        for(int place = 0; place < 5; place++){
+
+        }
     }
 
     public int[][] makeComputerGrid(){
