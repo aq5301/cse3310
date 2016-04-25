@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ShipPlacement">
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Start Game"
+        android:id="@+id/start"
+        android:layout_marginRight="78dp"
+        android:layout_marginEnd="78dp"
+        android:layout_marginBottom="71dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/currentShip"
+        android:layout_alignParentTop="true"
+        android:layout_alignLeft="@+id/start"
+        android:layout_alignStart="@+id/start"
+        android:layout_marginTop="38dp"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Please fill the board"
+        android:id="@+id/canStart"
+        android:layout_alignStart="@+id/start"
+        android:layout_above="@+id/start"
+        android:layout_alignEnd="@+id/start"
+        android:textColor="#000000"
+        android:textAlignment="center"/>
+
+</RelativeLayout>
