@@ -19,9 +19,15 @@ public class Results extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_results);
 
+        final Globals endGlobal = new Globals();
+        int moves = endGlobal.getPlayerMoves();
+        int hits = endGlobal.getPlayerHits();
+        double percentage = (hits/moves) * 100;
+
         Button newGame = (Button) findViewById(R.id.new_game);
         Button mainMenu = (Button) findViewById(R.id.main_menu);
         final TextView win = (TextView) findViewById(R.id.winner);
+        final TextView totalHits = (TextView) findViewById(R.id.p_hits);
         final TextView totalMoves = (TextView) findViewById(R.id.p_moves);
         final TextView percent = (TextView) findViewById(R.id.percent);
 

@@ -7,34 +7,22 @@ import android.graphics.Point;
  */
 public class Ship {
 
-    Point center;
-    Point [] allCoord;
+    int tiles[];
     int type; // 2, 3, 4- cells
-    int arrange; // 0 = horizontal, 1 = vertical
+    int arrange; // 0 = horizontal, 1 = vertical, or in case of 2-cell, the next tile goes to the right
     Boolean sunk;
 
+
     //creating a new ship
-    public Ship(int x, int y, boolean sink, int typing, int arrangement) {
-        this.center.set(x,y);
+    public Ship(int [] allTiles, boolean sink, int typing, int arrangement) {
+        this.tiles = allTiles;
         this.sunk = sink;
         this.type = typing;
         this.arrange = arrangement;
     }
 
-    public void setCoordinates(Point[] newCoord){
-        this.allCoord = newCoord;
-    }
-
-    //set new coordinates for center if, during creation, a spot is occupied
-    public void setCenter(int newX, int newY){
-            this.center.set(newX, newY);
-    }
-
-    public Point[] getCoordinates(){
-        return this.allCoord;
-    }
-    public Point getCenter(){
-        return this.center;
+    public int[] getTiles() {
+        return tiles;
     }
     public int getType(){
         return this.type;

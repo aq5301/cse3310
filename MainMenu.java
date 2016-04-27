@@ -2,8 +2,6 @@ package com.example.ashley.battleship;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
@@ -17,6 +15,29 @@ public class MainMenu extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_menu);
+
+        Button startNew = (Button) findViewById(R.id.new_game);
+        startNew.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent newGame = new Intent(MainMenu.this, ShipPlacement.class);
+                MainMenu.this.startActivity(newGame);
+            }
+
+            /* how to access global:
+            Globals g = (Globals)getApplication();
+            int data=g.getData();
+             */
+        });
+
+        Button load = (Button) findViewById(R.id.load_game);
+        load.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //Intent loadGame = new Intent(MainMenu.this, GameBoard.class);
+                //MainMenu.this.startActivity(loadGame);
+            }
+        });
 
         Button set = (Button) findViewById(R.id.set);
         set.setOnClickListener(new View.OnClickListener() {
