@@ -20,7 +20,7 @@ exit:
 prompt:
     MOV R7, #4
     MOV R0, #1
-    MOV R2, #17
+    MOV R2, #19
     LDR R1, =prompt_str
     SWI 0
     MOV PC, LR
@@ -57,7 +57,7 @@ generate:
 
 sort_ascending:
     CMP R6, #20
-    BEQ read_arrays
+    BEQ exit
     
     LDR R1, =a
     LDR R3, =b
