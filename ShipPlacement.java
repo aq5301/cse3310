@@ -64,19 +64,22 @@ public class ShipPlacement extends AppCompatActivity {
                 currentShip.setBackground(getResources().getDrawable(res, null));
             }
             else if(currentType == 2){ //3-cell vert
-                path = "drawable/ship3placeholder";
+                path = "drawable/threeship";
                 res = getResources().getIdentifier(path, null, getPackageName());
                 currentShip.setBackground(getResources().getDrawable(res, null));
+                currentShip.setRotation(90f);
             }
             else if(currentType == 3){ //4-cell horiz
                 path = "drawable/fourship";
                 res = getResources().getIdentifier(path, null, getPackageName());
                 currentShip.setBackground(getResources().getDrawable(res, null));
+                currentShip.setRotation(0f);
             }
             else if (currentType == 4){ //4-cell vert
-                path = "drawable/ship5placeholder";
+                path = "drawable/fourship";
                 res = getResources().getIdentifier(path, null, getPackageName());
                 currentShip.setBackground(getResources().getDrawable(res, null));
+                currentShip.setRotation(90f);
             }
             else{ //last ship put
                 moveOn();
@@ -358,16 +361,17 @@ public class ShipPlacement extends AppCompatActivity {
                                 tilePiece = "Tile" + tile;
                                 currentPiece = (ImageView) findViewById(id);
 
-                                tileP = "drawable/ship1placeholder";
+                                tileP = "drawable/shipendpiece";
                                 tileR = getResources().getIdentifier(tileP, null, getPackageName());
                                 image = getResources().getDrawable(tileR, null);
                                 currentPiece.setForeground(image);
+                                currentPiece.setScaleX(-1.0f);
                                 ////////////
                                 tilePiece = "Tile" + (tile - 1);
                                 ID = getResources().getIdentifier(tilePiece, "id", getPackageName());
                                 currentPiece = (ImageView) findViewById(ID);
 
-                                tileP = "drawable/ship2placeholder";
+                                tileP = "drawable/shipendpiece";
                                 tileR = getResources().getIdentifier(tileP, null, getPackageName());
                                 image = getResources().getDrawable(tileR, null);
                                 currentPiece.setForeground(image);
@@ -392,19 +396,21 @@ public class ShipPlacement extends AppCompatActivity {
                             tilePiece = "Tile" + tile;
                             currentPiece = (ImageView) findViewById(id);
 
-                            tileP = "drawable/ship1placeholder";
+                            tileP = "drawable/shipendpiece";
                             tileR = getResources().getIdentifier(tileP, null, getPackageName());
                             image = getResources().getDrawable(tileR, null);
                             currentPiece.setForeground(image);
+
                             ////////////////
                             tilePiece = "Tile" + (tile + 1);
                             ID = getResources().getIdentifier(tilePiece, "id", getPackageName());
                             currentPiece = (ImageView) findViewById(ID);
 
-                            tileP = "drawable/ship2placeholder";
+                            tileP = "drawable/shipendpiece";
                             tileR = getResources().getIdentifier(tileP, null, getPackageName());
                             image = getResources().getDrawable(tileR, null);
                             currentPiece.setForeground(image);
+                            currentPiece.setScaleX(-1.0f);
 
                             checkShip[tile] = true;
                             checkShip[tile + 1] = true;
@@ -431,7 +437,7 @@ public class ShipPlacement extends AppCompatActivity {
                                 tilePiece = "Tile" + tile;
                                 currentPiece = (ImageView) findViewById(id);
 
-                                tileP = "drawable/ship1placeholder";
+                                tileP = "drawable/shipmidsection";
                                 tileR = getResources().getIdentifier(tileP, null, getPackageName());
                                 image = getResources().getDrawable(tileR, null);
                                 currentPiece.setForeground(image);
@@ -440,7 +446,7 @@ public class ShipPlacement extends AppCompatActivity {
                                 ID = getResources().getIdentifier(tilePiece, "id", getPackageName());
                                 currentPiece = (ImageView) findViewById(ID);
 
-                                tileP = "drawable/ship2placeholder";
+                                tileP = "drawable/shipendpiece";
                                 tileR = getResources().getIdentifier(tileP, null, getPackageName());
                                 image = getResources().getDrawable(tileR, null);
                                 currentPiece.setForeground(image);
@@ -449,10 +455,11 @@ public class ShipPlacement extends AppCompatActivity {
                                 ID = getResources().getIdentifier(tilePiece, "id", getPackageName());
                                 currentPiece = (ImageView) findViewById(ID);
 
-                                tileP = "drawable/ship3placeholder";
+                                tileP = "drawable/shipendpiece";
                                 tileR = getResources().getIdentifier(tileP, null, getPackageName());
                                 image = getResources().getDrawable(tileR, null);
                                 currentPiece.setForeground(image);
+                                currentPiece.setScaleX(-1.0f);
 
 
                                 checkShip[tile] = true;
@@ -486,29 +493,32 @@ public class ShipPlacement extends AppCompatActivity {
                                 tilePiece = "Tile" + tile;
                                 currentPiece = (ImageView) findViewById(id);
 
-                                tileP = "drawable/ship1placeholder";
+                                tileP = "drawable/shipmidsection";
                                 tileR = getResources().getIdentifier(tileP, null, getPackageName());
                                 image = getResources().getDrawable(tileR, null);
                                 currentPiece.setForeground(image);
+                                currentPiece.setRotation(90f);
                                 /////////////
                                 tilePiece = "Tile" + (tile - 8);
                                 ID = getResources().getIdentifier(tilePiece, "id", getPackageName());
                                 currentPiece = (ImageView) findViewById(ID);
 
-                                tileP = "drawable/ship2placeholder";
+                                tileP = "drawable/shipendpiece";
                                 tileR = getResources().getIdentifier(tileP, null, getPackageName());
                                 image = getResources().getDrawable(tileR, null);
                                 currentPiece.setForeground(image);
+                                currentPiece.setRotation(90f);
                                 /////////////
                                 tilePiece = "Tile" + (tile + 8);
                                 ID = getResources().getIdentifier(tilePiece, "id", getPackageName());
                                 currentPiece = (ImageView) findViewById(ID);
 
-                                tileP = "drawable/ship3placeholder";
+                                tileP = "drawable/shipendpiece";
                                 tileR = getResources().getIdentifier(tileP, null, getPackageName());
                                 image = getResources().getDrawable(tileR, null);
                                 currentPiece.setForeground(image);
-
+                                currentPiece.setScaleX(-1.0f);
+                                currentPiece.setRotation(90f);
 
                                 checkShip[tile] = true;
                                 checkShip[tile - 8] = true;
@@ -542,7 +552,7 @@ public class ShipPlacement extends AppCompatActivity {
                                 tilePiece = "Tile" + tile;
                                 currentPiece = (ImageView) findViewById(id);
 
-                                tileP = "drawable/ship1placeholder";
+                                tileP = "drawable/shipmidsection";
                                 tileR = getResources().getIdentifier(tileP, null, getPackageName());
                                 image = getResources().getDrawable(tileR, null);
                                 currentPiece.setForeground(image);
@@ -551,7 +561,7 @@ public class ShipPlacement extends AppCompatActivity {
                                 ID = getResources().getIdentifier(tilePiece, "id", getPackageName());
                                 currentPiece = (ImageView) findViewById(ID);
 
-                                tileP = "drawable/ship2placeholder";
+                                tileP = "drawable/shipendpiece";
                                 tileR = getResources().getIdentifier(tileP, null, getPackageName());
                                 image = getResources().getDrawable(tileR, null);
                                 currentPiece.setForeground(image);
@@ -560,7 +570,7 @@ public class ShipPlacement extends AppCompatActivity {
                                 ID = getResources().getIdentifier(tilePiece, "id", getPackageName());
                                 currentPiece = (ImageView) findViewById(ID);
 
-                                tileP = "drawable/ship3placeholder";
+                                tileP = "drawable/shipmidsection";
                                 tileR = getResources().getIdentifier(tileP, null, getPackageName());
                                 image = getResources().getDrawable(tileR, null);
                                 currentPiece.setForeground(image);
@@ -569,10 +579,11 @@ public class ShipPlacement extends AppCompatActivity {
                                 ID = getResources().getIdentifier(tilePiece, "id", getPackageName());
                                 currentPiece = (ImageView) findViewById(ID);
 
-                                tileP = "drawable/ship4placeholder";
+                                tileP = "drawable/shipendpiece";
                                 tileR = getResources().getIdentifier(tileP, null, getPackageName());
                                 image = getResources().getDrawable(tileR, null);
                                 currentPiece.setForeground(image);
+                                currentPiece.setScaleX(-1.0f);
 
                                 checkShip[tile ] = true;
                                 checkShip[tile - 1] = true;
@@ -604,37 +615,44 @@ public class ShipPlacement extends AppCompatActivity {
                                 tilePiece = "Tile" + tile;
                                 currentPiece = (ImageView) findViewById(id);
 
-                                tileP = "drawable/ship1placeholder";
+                                tileP = "drawable/shipmidsection";
                                 tileR = getResources().getIdentifier(tileP, null, getPackageName());
                                 image = getResources().getDrawable(tileR, null);
                                 currentPiece.setForeground(image);
+                                currentPiece.setRotation(90f);
                                 ////////////
                                 tilePiece = "Tile" + (tile - 8);
                                 ID = getResources().getIdentifier(tilePiece, "id", getPackageName());
                                 currentPiece = (ImageView) findViewById(ID);
 
-                                tileP = "drawable/ship2placeholder";
+                                tileP = "drawable/shipendpiece";
                                 tileR = getResources().getIdentifier(tileP, null, getPackageName());
                                 image = getResources().getDrawable(tileR, null);
                                 currentPiece.setForeground(image);
+                                currentPiece.setRotation(90f);
                                 ////////////
                                 tilePiece = "Tile" + (tile + 8);
                                 ID = getResources().getIdentifier(tilePiece, "id", getPackageName());
                                 currentPiece = (ImageView) findViewById(ID);
 
-                                tileP = "drawable/ship3placeholder";
+                                tileP = "drawable/shipmidsection";
                                 tileR = getResources().getIdentifier(tileP, null, getPackageName());
                                 image = getResources().getDrawable(tileR, null);
                                 currentPiece.setForeground(image);
+                                currentPiece.setRotation(90f);
                                 ////////////
                                 tilePiece = "Tile" + (tile + 16);
                                 ID = getResources().getIdentifier(tilePiece, "id", getPackageName());
                                 currentPiece = (ImageView) findViewById(ID);
 
-                                tileP = "drawable/ship4placeholder";
+                                tileP = "drawable/shipendpiece";
                                 tileR = getResources().getIdentifier(tileP, null, getPackageName());
                                 image = getResources().getDrawable(tileR, null);
                                 currentPiece.setForeground(image);
+                                currentPiece.setScaleX(-1.0f);
+                                currentPiece.setRotation(90f);
+
+
 
                                 checkShip[tile] = true;
                                 checkShip[tile - 8] = true;

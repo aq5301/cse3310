@@ -39,4 +39,12 @@
         android:textColor="#000000"
         android:textAlignment="center"/>
 
+    <ImageView
+        android:layout_width="350dp"
+        android:layout_height="match_parent"
+        android:id="@+id/bg"
+        android:background="#0d112e"
+        android:layout_centerVertical="true"
+        />
+
 </RelativeLayout>

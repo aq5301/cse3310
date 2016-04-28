@@ -39,4 +39,20 @@
         android:layout_alignParentBottom="true"
         android:layout_alignEnd="@+id/include2"/>
 
+    <ImageView
+        android:layout_width="350dp"
+        android:layout_height="match_parent"
+        android:id="@+id/bg1"
+        android:background="#0d112e"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"/>
+
+    <ImageView
+        android:layout_width="222dp"
+        android:layout_height="222dp"
+        android:id="@+id/bg2"
+        android:background="#0d112e"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"/>
+
 </RelativeLayout>

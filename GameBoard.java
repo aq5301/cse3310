@@ -65,7 +65,7 @@ public class GameBoard extends AppCompatActivity {
                    tileS = "Tile" + tile + "s";
                    id = getResources().getIdentifier(tileS, "id", getPackageName());
                    currentTile = (ImageView) findViewById(id);
-                   tilePath = "drawable/ship1placeholder";
+                   tilePath = "drawable/shipendpiece";
                    tileRe = getResources().getIdentifier(tilePath, null, getPackageName());
                    currentTile.setForeground(getResources().getDrawable(tileRe, null));
                    ///
@@ -73,23 +73,25 @@ public class GameBoard extends AppCompatActivity {
                    tileS = "Tile" + tile + "s";
                    id = getResources().getIdentifier(tileS, "id", getPackageName());
                    currentTile = (ImageView) findViewById(id);
-                   tilePath = "drawable/ship2placeholder";
+                   tilePath = "drawable/shipendpiece";
                    tileRe = getResources().getIdentifier(tilePath, null, getPackageName());
                    currentTile.setForeground(getResources().getDrawable(tileRe, null));
+                   currentTile.setScaleX(-1.0f);
                }else{
                    tile = playerShips[run].getTiles()[0]; //provide first tile
                    tileS = "Tile" + tile + "s";
                    id = getResources().getIdentifier(tileS, "id", getPackageName());
                    currentTile = (ImageView) findViewById(id);
-                   tilePath = "drawable/ship2placeholder";
+                   tilePath = "drawable/shipendpiece";
                    tileRe = getResources().getIdentifier(tilePath, null, getPackageName());
                    currentTile.setForeground(getResources().getDrawable(tileRe, null));
+                   currentTile.setScaleX(-1.0f);
                    ///
                    tile = playerShips[run].getTiles()[1]; //provide second tile
                    tileS = "Tile" + tile + "s";
                    id = getResources().getIdentifier(tileS, "id", getPackageName());
                    currentTile = (ImageView) findViewById(id);
-                   tilePath = "drawable/ship1placeholder";
+                   tilePath = "drawable/shipendpiece";
                    tileRe = getResources().getIdentifier(tilePath, null, getPackageName());
                    currentTile.setForeground(getResources().getDrawable(tileRe, null));
 
@@ -101,31 +103,35 @@ public class GameBoard extends AppCompatActivity {
                    tileS = "Tile" + tile + "s";
                    id = getResources().getIdentifier(tileS, "id", getPackageName());
                    currentTile = (ImageView) findViewById(id);
-                   tilePath = "drawable/ship1placeholder";
+                   tilePath = "drawable/shipmidsection";
                    tileRe = getResources().getIdentifier(tilePath, null, getPackageName());
                    currentTile.setForeground(getResources().getDrawable(tileRe, null));
+                   currentTile.setRotation(90f);
                    /////
                    tile = playerShips[run].getTiles()[1]; //provide second tile TOP
                    tileS = "Tile" + tile + "s";
                    id = getResources().getIdentifier(tileS, "id", getPackageName());
                    currentTile = (ImageView) findViewById(id);
-                   tilePath = "drawable/ship2placeholder";
+                   tilePath = "drawable/shipendpiece";
                    tileRe = getResources().getIdentifier(tilePath, null, getPackageName());
                    currentTile.setForeground(getResources().getDrawable(tileRe, null));
+                   currentTile.setRotation(90f);
                    /////
                    tile = playerShips[run].getTiles()[2]; //provide third tile BOTTOM
                    tileS = "Tile" + tile + "s";
                    id = getResources().getIdentifier(tileS, "id", getPackageName());
                    currentTile = (ImageView) findViewById(id);
-                   tilePath = "drawable/ship3placeholder";
+                   tilePath = "drawable/shipendpiece";
                    tileRe = getResources().getIdentifier(tilePath, null, getPackageName());
                    currentTile.setForeground(getResources().getDrawable(tileRe, null));
+                   currentTile.setScaleX(-1.0f);
+                   currentTile.setRotation(90f);
                }else{ //horizontal
                    tile = playerShips[run].getTiles()[0]; //provide first tile CENTER
                    tileS = "Tile" + tile + "s";
                    id = getResources().getIdentifier(tileS, "id", getPackageName());
                    currentTile = (ImageView) findViewById(id);
-                   tilePath = "drawable/ship1placeholder";
+                   tilePath = "drawable/shipmidsection";
                    tileRe = getResources().getIdentifier(tilePath, null, getPackageName());
                    currentTile.setForeground(getResources().getDrawable(tileRe, null));
                    /////
@@ -133,7 +139,7 @@ public class GameBoard extends AppCompatActivity {
                    tileS = "Tile" + tile + "s";
                    id = getResources().getIdentifier(tileS, "id", getPackageName());
                    currentTile = (ImageView) findViewById(id);
-                   tilePath = "drawable/ship2placeholder";
+                   tilePath = "drawable/shipendpiece";
                    tileRe = getResources().getIdentifier(tilePath, null, getPackageName());
                    currentTile.setForeground(getResources().getDrawable(tileRe, null));
                    /////
@@ -141,9 +147,10 @@ public class GameBoard extends AppCompatActivity {
                    tileS = "Tile" + tile + "s";
                    id = getResources().getIdentifier(tileS, "id", getPackageName());
                    currentTile = (ImageView) findViewById(id);
-                   tilePath = "drawable/ship3placeholder";
+                   tilePath = "drawable/shipendpiece";
                    tileRe = getResources().getIdentifier(tilePath, null, getPackageName());
                    currentTile.setForeground(getResources().getDrawable(tileRe, null));
+                   currentTile.setScaleX(-1.0f);
 
                }
 
@@ -153,66 +160,76 @@ public class GameBoard extends AppCompatActivity {
                    tileS = "Tile" + tile + "s";
                    id = getResources().getIdentifier(tileS, "id", getPackageName());
                    currentTile = (ImageView) findViewById(id);
-                   tilePath = "drawable/ship1placeholder";
+                   tilePath = "drawable/shipmidsection";
                    tileRe = getResources().getIdentifier(tilePath, null, getPackageName());
                    currentTile.setForeground(getResources().getDrawable(tileRe, null));
+                   currentTile.setRotation(90f);
                    /////
                    tile = playerShips[run].getTiles()[1]; //provide second tile LEFT
                    tileS = "Tile" + tile + "s";
                    id = getResources().getIdentifier(tileS, "id", getPackageName());
                    currentTile = (ImageView) findViewById(id);
-                   tilePath = "drawable/ship2placeholder";
+                   tilePath = "drawable/shipendpiece";
                    tileRe = getResources().getIdentifier(tilePath, null, getPackageName());
                    currentTile.setForeground(getResources().getDrawable(tileRe, null));
+                   currentTile.setRotation(90f);
                    /////
                    tile = playerShips[run].getTiles()[2]; //provide third tile RIGHT
                    tileS = "Tile" + tile + "s";
                    id = getResources().getIdentifier(tileS, "id", getPackageName());
                    currentTile = (ImageView) findViewById(id);
-                   tilePath = "drawable/ship3placeholder";
+                   tilePath = "drawable/shipmidsection";
                    tileRe = getResources().getIdentifier(tilePath, null, getPackageName());
                    currentTile.setForeground(getResources().getDrawable(tileRe, null));
+                   currentTile.setRotation(90f);
                    /////
                    tile = playerShips[run].getTiles()[3]; //provide third tile FAR RIGHT
                    tileS = "Tile" + tile + "s";
                    id = getResources().getIdentifier(tileS, "id", getPackageName());
                    currentTile = (ImageView) findViewById(id);
-                   tilePath = "drawable/ship3placeholder";
+                   tilePath = "drawable/shipendpiece";
                    tileRe = getResources().getIdentifier(tilePath, null, getPackageName());
                    currentTile.setForeground(getResources().getDrawable(tileRe, null));
+                   currentTile.setScaleX(-1.0f);
+                   currentTile.setRotation(90f);
 
                }else{ //horizontal
                    tile = playerShips[run].getTiles()[0]; //provide first tile CENTER
                    tileS = "Tile" + tile + "s";
                    id = getResources().getIdentifier(tileS, "id", getPackageName());
                    currentTile = (ImageView) findViewById(id);
-                   tilePath = "drawable/ship1placeholder";
+                   tilePath = "drawable/shipmidsection";
                    tileRe = getResources().getIdentifier(tilePath, null, getPackageName());
                    currentTile.setForeground(getResources().getDrawable(tileRe, null));
+
                    /////
-                   tile = playerShips[run].getTiles()[1]; //provide second tile TOP
+                   tile = playerShips[run].getTiles()[1]; //provide second tile LEFT
                    tileS = "Tile" + tile + "s";
                    id = getResources().getIdentifier(tileS, "id", getPackageName());
                    currentTile = (ImageView) findViewById(id);
-                   tilePath = "drawable/ship2placeholder";
+                   tilePath = "drawable/shipendpiece";
                    tileRe = getResources().getIdentifier(tilePath, null, getPackageName());
                    currentTile.setForeground(getResources().getDrawable(tileRe, null));
+
                    /////
-                   tile = playerShips[run].getTiles()[2]; //provide third tile BOTTOM
+                   tile = playerShips[run].getTiles()[2]; //provide third tile RIGHT
                    tileS = "Tile" + tile + "s";
                    id = getResources().getIdentifier(tileS, "id", getPackageName());
                    currentTile = (ImageView) findViewById(id);
-                   tilePath = "drawable/ship3placeholder";
+                   tilePath = "drawable/shipmidsection";
                    tileRe = getResources().getIdentifier(tilePath, null, getPackageName());
                    currentTile.setForeground(getResources().getDrawable(tileRe, null));
+
                    /////
-                   tile = playerShips[run].getTiles()[3]; //provide third tile FAR BOTTOM
+                   tile = playerShips[run].getTiles()[3]; //provide third tile FAR RIGHT
                    tileS = "Tile" + tile + "s";
                    id = getResources().getIdentifier(tileS, "id", getPackageName());
                    currentTile = (ImageView) findViewById(id);
-                   tilePath = "drawable/ship3placeholder";
+                   tilePath = "drawable/shipendpiece";
                    tileRe = getResources().getIdentifier(tilePath, null, getPackageName());
                    currentTile.setForeground(getResources().getDrawable(tileRe, null));
+                   currentTile.setScaleX(-1.0f);
+
                }
 
            }else{
@@ -565,8 +582,6 @@ public class GameBoard extends AppCompatActivity {
 
     //quitGame ends the game prematurely and will save the current state
     public void quitGame(){
-        //SAVE BOTH PLAYER AND AI BOARD, CURRENT TURN, return to main menu
-        //saveGame(PLAYERGRID, AIGRID, turn);
 
         globalInfo.setPlayerMoves(numPlayerMoves);
         globalInfo.setPlayerHits(numPlayerHits);

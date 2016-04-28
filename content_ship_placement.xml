@@ -20,7 +20,8 @@
         android:layout_height="40dp"
         android:onClick="OnClick"
         android:foreground="@drawable/empty"
-        android:outlineProvider="none" />
+        android:outlineProvider="none"
+        android:adjustViewBounds="false"/>
 
     <ImageButton
         android:id="@+id/Tile2"
@@ -34,7 +35,8 @@
         android:layout_height="40dp"
         android:onClick="OnClick"
         android:foreground="@drawable/empty"
-        android:outlineProvider="none" />
+        android:outlineProvider="none"
+        android:adjustViewBounds="false"/>
     <ImageButton
         android:id="@+id/Tile3"
         style="@style/TileButton"
@@ -47,7 +49,8 @@
         android:layout_height="40dp"
         android:onClick="OnClick"
         android:foreground="@drawable/empty"
-        android:outlineProvider="none" />
+        android:outlineProvider="none"
+        android:adjustViewBounds="false"/>
 
     <ImageButton
         android:id="@+id/Tile4"
@@ -61,7 +64,8 @@
         android:layout_height="40dp"
         android:onClick="OnClick"
         android:foreground="@drawable/empty"
-        android:outlineProvider="none" />
+        android:outlineProvider="none"
+        android:adjustViewBounds="false"/>
     <ImageButton
         android:id="@+id/Tile5"
         style="@style/TileButton"
@@ -74,7 +78,8 @@
         android:layout_height="40dp"
         android:onClick="OnClick"
         android:foreground="@drawable/empty"
-        android:outlineProvider="none" />
+        android:outlineProvider="none"
+        android:adjustViewBounds="false"/>
 
     <ImageButton
         android:id="@+id/Tile6"
@@ -88,7 +93,8 @@
         android:layout_height="40dp"
         android:onClick="OnClick"
         android:foreground="@drawable/empty"
-        android:outlineProvider="none" />
+        android:outlineProvider="none"
+        android:adjustViewBounds="false"/>
     <ImageButton
         android:id="@+id/Tile7"
         style="@style/TileButton"
@@ -101,7 +107,8 @@
         android:layout_height="40dp"
         android:onClick="OnClick"
         android:foreground="@drawable/empty"
-        android:outlineProvider="none" />
+        android:outlineProvider="none"
+        android:adjustViewBounds="false"/>
 
     <ImageButton
         android:id="@+id/Tile8"
@@ -115,7 +122,8 @@
         android:layout_height="40dp"
         android:onClick="OnClick"
         android:foreground="@drawable/empty"
-        android:outlineProvider="none" />
+        android:outlineProvider="none"
+        android:adjustViewBounds="false"/>
     <ImageButton
         android:id="@+id/Tile9"
         style="@style/TileButton"
@@ -128,7 +136,8 @@
         android:layout_height="40dp"
         android:onClick="OnClick"
         android:foreground="@drawable/empty"
-        android:outlineProvider="none" />
+        android:outlineProvider="none"
+        android:adjustViewBounds="false"/>
 
     <ImageButton
         android:id="@+id/Tile10"
@@ -142,7 +151,8 @@
         android:layout_height="40dp"
         android:onClick="OnClick"
         android:foreground="@drawable/empty"
-        android:outlineProvider="none" />
+        android:outlineProvider="none"
+        android:adjustViewBounds="false"/>
     <ImageButton
         android:id="@+id/Tile11"
         style="@style/TileButton"
@@ -155,7 +165,8 @@
         android:layout_height="40dp"
         android:onClick="OnClick"
         android:foreground="@drawable/empty"
-        android:outlineProvider="none" />
+        android:outlineProvider="none"
+        android:adjustViewBounds="false"/>
 
     <ImageButton
         android:id="@+id/Tile12"
@@ -169,7 +180,8 @@
         android:layout_height="40dp"
         android:onClick="OnClick"
         android:foreground="@drawable/empty"
-        android:outlineProvider="none" />
+        android:outlineProvider="none"
+        android:adjustViewBounds="false"/>
     <ImageButton
         android:id="@+id/Tile13"
         style="@style/TileButton"
@@ -182,7 +194,8 @@
         android:layout_height="40dp"
         android:onClick="OnClick"
         android:foreground="@drawable/empty"
-        android:outlineProvider="none" />
+        android:outlineProvider="none"
+        android:adjustViewBounds="false"/>
 
     <ImageButton
         android:id="@+id/Tile14"
@@ -196,7 +209,8 @@
         android:layout_height="40dp"
         android:onClick="OnClick"
         android:foreground="@drawable/empty"
-        android:outlineProvider="none" />
+        android:outlineProvider="none"
+        android:adjustViewBounds="false"/>
     <ImageButton
         android:id="@+id/Tile15"
         style="@style/TileButton"
@@ -209,7 +223,8 @@
         android:layout_height="40dp"
         android:onClick="OnClick"
         android:foreground="@drawable/empty"
-        android:outlineProvider="none" />
+        android:outlineProvider="none"
+        android:adjustViewBounds="false"/>
 
     <ImageButton
         android:id="@+id/Tile16"
@@ -223,7 +238,8 @@
         android:layout_height="40dp"
         android:onClick="OnClick"
         android:foreground="@drawable/empty"
-        android:outlineProvider="none" />
+        android:outlineProvider="none"
+        android:adjustViewBounds="false"/>
 
     <ImageButton
         android:id="@+id/Tile17"
@@ -237,7 +253,8 @@
         android:layout_height="40dp"
         android:onClick="OnClick"
         android:foreground="@drawable/empty"
-        android:outlineProvider="none" />
+        android:outlineProvider="none"
+        android:adjustViewBounds="false"/>
 
     <ImageButton
         android:id="@+id/Tile18"
@@ -251,7 +268,8 @@
         android:layout_height="40dp"
         android:onClick="OnClick"
         android:foreground="@drawable/empty"
-        android:outlineProvider="none" />
+        android:outlineProvider="none"
+        android:adjustViewBounds="false"/>
     <ImageButton
         android:id="@+id/Tile19"
         style="@style/TileButton"
@@ -264,7 +282,8 @@
         android:layout_height="40dp"
         android:onClick="OnClick"
         android:foreground="@drawable/empty"
-        android:outlineProvider="none" />
+        android:outlineProvider="none"
+        android:adjustViewBounds="false"/>
 
     <ImageButton
         android:id="@+id/Tile20"
@@ -278,7 +297,8 @@
         android:layout_height="40dp"
         android:onClick="OnClick"
         android:foreground="@drawable/empty"
-        android:outlineProvider="none" />
+        android:outlineProvider="none"
+        android:adjustViewBounds="false"/>
     <ImageButton
         android:id="@+id/Tile21"
         style="@style/TileButton"
@@ -291,7 +311,8 @@
         android:layout_height="40dp"
         android:onClick="OnClick"
         android:foreground="@drawable/empty"
-        android:outlineProvider="none" />
+        android:outlineProvider="none"
+        android:adjustViewBounds="false"/>
 
     <ImageButton
         android:id="@+id/Tile22"
@@ -305,7 +326,8 @@
         android:layout_height="40dp"
         android:onClick="OnClick"
         android:foreground="@drawable/empty"
-        android:outlineProvider="none" />
+        android:outlineProvider="none"
+        android:adjustViewBounds="false"/>
     <ImageButton
         android:id="@+id/Tile23"
         style="@style/TileButton"
@@ -318,7 +340,8 @@
         android:layout_height="40dp"
         android:onClick="OnClick"
         android:foreground="@drawable/empty"
-        android:outlineProvider="none" />
+        android:outlineProvider="none"
+        android:adjustViewBounds="false"/>
 
     <ImageButton
         android:id="@+id/Tile24"
@@ -332,7 +355,8 @@
         android:layout_height="40dp"
         android:onClick="OnClick"
         android:foreground="@drawable/empty"
-        android:outlineProvider="none" />
+        android:outlineProvider="none"
+        android:adjustViewBounds="false"/>
     <ImageButton
         android:id="@+id/Tile25"
         style="@style/TileButton"
@@ -345,7 +369,8 @@
         android:layout_height="40dp"
         android:onClick="OnClick"
         android:foreground="@drawable/empty"
-        android:outlineProvider="none" />
+        android:outlineProvider="none"
+        android:adjustViewBounds="false"/>
 
     <ImageButton
         android:id="@+id/Tile26"
@@ -359,7 +384,8 @@
         android:layout_height="40dp"
         android:onClick="OnClick"
         android:foreground="@drawable/empty"
-        android:outlineProvider="none" />
+        android:outlineProvider="none"
+        android:adjustViewBounds="false"/>
     <ImageButton
         android:id="@+id/Tile27"
         style="@style/TileButton"
@@ -372,7 +398,8 @@
         android:layout_height="40dp"
         android:onClick="OnClick"
         android:foreground="@drawable/empty"
-        android:outlineProvider="none" />
+        android:outlineProvider="none"
+        android:adjustViewBounds="false"/>
 
     <ImageButton
         android:id="@+id/Tile28"
@@ -386,7 +413,8 @@
         android:layout_height="40dp"
         android:onClick="OnClick"
         android:foreground="@drawable/empty"
-        android:outlineProvider="none" />
+        android:outlineProvider="none"
+        android:adjustViewBounds="false"/>
     <ImageButton
         android:id="@+id/Tile29"
         style="@style/TileButton"
@@ -399,7 +427,8 @@
         android:layout_height="40dp"
         android:onClick="OnClick"
         android:foreground="@drawable/empty"
-        android:outlineProvider="none" />
+        android:outlineProvider="none"
+        android:adjustViewBounds="false"/>
 
     <ImageButton
         android:id="@+id/Tile30"
@@ -413,7 +442,8 @@
         android:layout_height="40dp"
         android:onClick="OnClick"
         android:foreground="@drawable/empty"
-        android:outlineProvider="none" />
+        android:outlineProvider="none"
+        android:adjustViewBounds="false"/>
     <ImageButton
         android:id="@+id/Tile31"
         style="@style/TileButton"
@@ -426,7 +456,8 @@
         android:layout_height="40dp"
         android:onClick="OnClick"
         android:foreground="@drawable/empty"
-        android:outlineProvider="none" />
+        android:outlineProvider="none"
+        android:adjustViewBounds="false"/>
 
     <ImageButton
         android:id="@+id/Tile32"
@@ -440,7 +471,8 @@
         android:layout_height="40dp"
         android:onClick="OnClick"
         android:foreground="@drawable/empty"
-        android:outlineProvider="none" />
+        android:outlineProvider="none"
+        android:adjustViewBounds="false"/>
 
     <ImageButton
         android:id="@+id/Tile33"
@@ -454,7 +486,8 @@
         android:layout_height="40dp"
         android:onClick="OnClick"
         android:foreground="@drawable/empty"
-        android:outlineProvider="none" />
+        android:outlineProvider="none"
+        android:adjustViewBounds="false"/>
 
     <ImageButton
         android:id="@+id/Tile34"
@@ -468,7 +501,8 @@
         android:layout_height="40dp"
         android:onClick="OnClick"
         android:foreground="@drawable/empty"
-        android:outlineProvider="none" />
+        android:outlineProvider="none"
+        android:adjustViewBounds="false"/>
     <ImageButton
         android:id="@+id/Tile35"
         style="@style/TileButton"
@@ -481,7 +515,8 @@
         android:layout_height="40dp"
         android:onClick="OnClick"
         android:foreground="@drawable/empty"
-        android:outlineProvider="none" />
+        android:outlineProvider="none"
+        android:adjustViewBounds="false"/>
 
     <ImageButton
         android:id="@+id/Tile36"
@@ -495,7 +530,8 @@
         android:layout_height="40dp"
         android:onClick="OnClick"
         android:foreground="@drawable/empty"
-        android:outlineProvider="none" />
+        android:outlineProvider="none"
+        android:adjustViewBounds="false"/>
     <ImageButton
         android:id="@+id/Tile37"
         style="@style/TileButton"
@@ -508,7 +544,8 @@
         android:layout_height="40dp"
         android:onClick="OnClick"
         android:foreground="@drawable/empty"
-        android:outlineProvider="none" />
+        android:outlineProvider="none"
+        android:adjustViewBounds="false"/>
 
     <ImageButton
         android:id="@+id/Tile38"
@@ -522,7 +559,8 @@
         android:layout_height="40dp"
         android:onClick="OnClick"
         android:foreground="@drawable/empty"
-        android:outlineProvider="none" />
+        android:outlineProvider="none"
+        android:adjustViewBounds="false"/>
     <ImageButton
         android:id="@+id/Tile39"
         style="@style/TileButton"
@@ -535,7 +573,8 @@
         android:layout_height="40dp"
         android:onClick="OnClick"
         android:foreground="@drawable/empty"
-        android:outlineProvider="none" />
+        android:outlineProvider="none"
+        android:adjustViewBounds="false"/>
 
     <ImageButton
         android:id="@+id/Tile40"
@@ -549,7 +588,8 @@
         android:layout_height="40dp"
         android:onClick="OnClick"
         android:foreground="@drawable/empty"
-        android:outlineProvider="none" />
+        android:outlineProvider="none"
+        android:adjustViewBounds="false"/>
     <ImageButton
         android:id="@+id/Tile41"
         style="@style/TileButton"
@@ -562,7 +602,8 @@
         android:layout_height="40dp"
         android:onClick="OnClick"
         android:foreground="@drawable/empty"
-        android:outlineProvider="none" />
+        android:outlineProvider="none"
+        android:adjustViewBounds="false"/>
 
     <ImageButton
         android:id="@+id/Tile42"
@@ -576,7 +617,8 @@
         android:layout_height="40dp"
         android:onClick="OnClick"
         android:foreground="@drawable/empty"
-        android:outlineProvider="none" />
+        android:outlineProvider="none"
+        android:adjustViewBounds="false"/>
     <ImageButton
         android:id="@+id/Tile43"
         style="@style/TileButton"
@@ -589,7 +631,8 @@
         android:layout_height="40dp"
         android:onClick="OnClick"
         android:foreground="@drawable/empty"
-        android:outlineProvider="none" />
+        android:outlineProvider="none"
+        android:adjustViewBounds="false"/>
 
     <ImageButton
         android:id="@+id/Tile44"
@@ -603,7 +646,8 @@
         android:layout_height="40dp"
         android:onClick="OnClick"
         android:foreground="@drawable/empty"
-        android:outlineProvider="none" />
+        android:outlineProvider="none"
+        android:adjustViewBounds="false"/>
     <ImageButton
         android:id="@+id/Tile45"
         style="@style/TileButton"
@@ -616,7 +660,8 @@
         android:layout_height="40dp"
         android:onClick="OnClick"
         android:foreground="@drawable/empty"
-        android:outlineProvider="none" />
+        android:outlineProvider="none"
+        android:adjustViewBounds="false"/>
 
     <ImageButton
         android:id="@+id/Tile46"
@@ -630,7 +675,8 @@
         android:layout_height="40dp"
         android:onClick="OnClick"
         android:foreground="@drawable/empty"
-        android:outlineProvider="none" />
+        android:outlineProvider="none"
+        android:adjustViewBounds="false"/>
     <ImageButton
         android:id="@+id/Tile47"
         style="@style/TileButton"
@@ -643,7 +689,8 @@
         android:layout_height="40dp"
         android:onClick="OnClick"
         android:foreground="@drawable/empty"
-        android:outlineProvider="none" />
+        android:outlineProvider="none"
+        android:adjustViewBounds="false"/>
 
     <ImageButton
         android:id="@+id/Tile48"
@@ -657,7 +704,8 @@
         android:layout_height="40dp"
         android:onClick="OnClick"
         android:foreground="@drawable/empty"
-        android:outlineProvider="none" />
+        android:outlineProvider="none"
+        android:adjustViewBounds="false"/>
 
     <ImageButton
         android:id="@+id/Tile49"
@@ -671,7 +719,8 @@
         android:layout_height="40dp"
         android:onClick="OnClick"
         android:foreground="@drawable/empty"
-        android:outlineProvider="none" />
+        android:outlineProvider="none"
+        android:adjustViewBounds="false"/>
 
     <ImageButton
         android:id="@+id/Tile50"
@@ -685,7 +734,8 @@
         android:layout_height="40dp"
         android:onClick="OnClick"
         android:foreground="@drawable/empty"
-        android:outlineProvider="none" />
+        android:outlineProvider="none"
+        android:adjustViewBounds="false"/>
     <ImageButton
         android:id="@+id/Tile51"
         style="@style/TileButton"
@@ -698,7 +748,8 @@
         android:layout_height="40dp"
         android:onClick="OnClick"
         android:foreground="@drawable/empty"
-        android:outlineProvider="none" />
+        android:outlineProvider="none"
+        android:adjustViewBounds="false"/>
 
     <ImageButton
         android:id="@+id/Tile52"
@@ -712,7 +763,8 @@
         android:layout_height="40dp"
         android:onClick="OnClick"
         android:foreground="@drawable/empty"
-        android:outlineProvider="none" />
+        android:outlineProvider="none"
+        android:adjustViewBounds="false"/>
     <ImageButton
         android:id="@+id/Tile53"
         style="@style/TileButton"
@@ -725,7 +777,8 @@
         android:layout_height="40dp"
         android:onClick="OnClick"
         android:foreground="@drawable/empty"
-        android:outlineProvider="none" />
+        android:outlineProvider="none"
+        android:adjustViewBounds="false"/>
 
     <ImageButton
         android:id="@+id/Tile54"
@@ -739,7 +792,8 @@
         android:layout_height="40dp"
         android:onClick="OnClick"
         android:foreground="@drawable/empty"
-        android:outlineProvider="none" />
+        android:outlineProvider="none"
+        android:adjustViewBounds="false"/>
     <ImageButton
         android:id="@+id/Tile55"
         style="@style/TileButton"
@@ -752,7 +806,8 @@
         android:layout_height="40dp"
         android:onClick="OnClick"
         android:foreground="@drawable/empty"
-        android:outlineProvider="none" />
+        android:outlineProvider="none"
+        android:adjustViewBounds="false"/>
 
     <ImageButton
         android:id="@+id/Tile56"
@@ -766,7 +821,8 @@
         android:layout_height="40dp"
         android:onClick="OnClick"
         android:foreground="@drawable/empty"
-        android:outlineProvider="none" />
+        android:outlineProvider="none"
+        android:adjustViewBounds="false"/>
     <ImageButton
         android:id="@+id/Tile57"
         style="@style/TileButton"
@@ -779,7 +835,8 @@
         android:layout_height="40dp"
         android:onClick="OnClick"
         android:foreground="@drawable/empty"
-        android:outlineProvider="none" />
+        android:outlineProvider="none"
+        android:adjustViewBounds="false"/>
 
     <ImageButton
         android:id="@+id/Tile58"
@@ -793,7 +850,8 @@
         android:layout_height="40dp"
         android:onClick="OnClick"
         android:foreground="@drawable/empty"
-        android:outlineProvider="none" />
+        android:outlineProvider="none"
+        android:adjustViewBounds="false"/>
     <ImageButton
         android:id="@+id/Tile59"
         style="@style/TileButton"
@@ -806,7 +864,8 @@
         android:layout_height="40dp"
         android:onClick="OnClick"
         android:foreground="@drawable/empty"
-        android:outlineProvider="none" />
+        android:outlineProvider="none"
+        android:adjustViewBounds="false"/>
 
     <ImageButton
         android:id="@+id/Tile60"
@@ -820,7 +879,8 @@
         android:layout_height="40dp"
         android:onClick="OnClick"
         android:foreground="@drawable/empty"
-        android:outlineProvider="none" />
+        android:outlineProvider="none"
+        android:adjustViewBounds="false"/>
     <ImageButton
         android:id="@+id/Tile61"
         style="@style/TileButton"
@@ -833,7 +893,8 @@
         android:layout_height="40dp"
         android:onClick="OnClick"
         android:foreground="@drawable/empty"
-        android:outlineProvider="none" />
+        android:outlineProvider="none"
+        android:adjustViewBounds="false"/>
 
     <ImageButton
         android:id="@+id/Tile62"
@@ -847,7 +908,8 @@
         android:layout_height="40dp"
         android:onClick="OnClick"
         android:foreground="@drawable/empty"
-        android:outlineProvider="none" />
+        android:outlineProvider="none"
+        android:adjustViewBounds="false"/>
     <ImageButton
         android:id="@+id/Tile63"
         style="@style/TileButton"
@@ -860,7 +922,8 @@
         android:layout_height="40dp"
         android:onClick="OnClick"
         android:foreground="@drawable/empty"
-        android:outlineProvider="none" />
+        android:outlineProvider="none"
+        android:adjustViewBounds="false"/>
 
     <ImageButton
         android:id="@+id/Tile64"
@@ -874,7 +937,8 @@
         android:layout_height="40dp"
         android:onClick="OnClick"
         android:foreground="@drawable/empty"
-        android:outlineProvider="none" />
+        android:outlineProvider="none"
+        android:adjustViewBounds="false"/>
 
 
 </GridLayout>
