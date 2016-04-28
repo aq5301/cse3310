@@ -3,10 +3,7 @@ package com.example.ashley.battleship;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -18,14 +15,14 @@ public class GameBoard extends AppCompatActivity {
     //carry on PLAYER and COMPUTER matrices
 
     final Handler AIhandler = new Handler();
-    int turn; //by default, these are all 0
+    int turn;
     int numPlayerMoves;
     int numPlayerHits;
-    Boolean isHit;
-    Boolean ongoing = true; //true when a winner is declared
     TextView currentTurn;
     Ship [] playerShips;
     Ship [] AIShips;
+    Boolean [] hitTiles;
+    Ship selectedShip;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,13 +30,14 @@ public class GameBoard extends AppCompatActivity {
         setContentView(R.layout.activity_game_board);
 
         globalInfo = (Globals) getApplication();
-        turn = 0;
+        turn = 0; hitTiles = new Boolean[65];
         playerShips = globalInfo.getPlayerShips();
         AIShips = globalInfo.getAIships();
+
         numPlayerMoves = globalInfo.getPlayerMoves();
         numPlayerHits = globalInfo.getPlayerHits();
-        drawPlayerGrid();
 
+        drawPlayerGrid();
 
         currentTurn = (TextView) findViewById(R.id.ongoing_turn);
         currentTurn.setText("Your Turn");
@@ -474,19 +472,62 @@ public class GameBoard extends AppCompatActivity {
 
     public void playerMove(int tileNum, int tileID) {
 
+        if(hitTiles[tileNum]){ //tile cannot be selected more than once
+            return;
+        }
+        hitTiles[tileNum] = true;
+        
+        //by default, this is a miss; the for loops will check if it is a hit
+        Boolean isHit = false, sink = false; String path; int res;
+        ImageView hitTile;
+        int numberHits;
+        numPlayerMoves = numPlayerMoves + 1;
+        //loop through the AIShip list; then loop through the Tile array of each individual ship
         for(int findTile = 0; findTile < 5; findTile++){
-            
+            selectedShip = AIShips[findTile];
+            for(int findTile2 = 0; findTile2 < AIShips[findTile].getTiles().length; findTile2++){
+                if(tileNum == AIShips[findTile].getTiles()[findTile2]){
+                    isHit = true;
+                    numberHits = AIShips[findTile].getNumHits() + 1;
+                    AIShips[findTile].setNumHits(numberHits);
+                    if(AIShips[findTile].getNumHits() == AIShips[findTile].getType()){ //if #hits = ship type, it is sunk
+                        AIShips[findTile].setSunk(true);
+                        sink = true;
+                        //set # AI ships sunk on game board: increment number by 1
+                    }
+                    continue;
+                }
+            }
+            if(isHit){
+                numPlayerHits = numPlayerHits + 1;
+                continue;
 
+            }
+        }
+
+        if(isHit){
+            hitTile = (ImageView) findViewById(tileID);
+            path = "drawable/threeship";
+            res = getResources().getIdentifier(path, null, getPackageName());
+            hitTile.setBackground(getResources().getDrawable(res, null));
+            //play sound
+            if(sink){
+                currentTurn.setText("Computer's Turn");
+                turn = 1;
+                AIMove();
+            }
 
         }
-        numPlayerMoves = numPlayerMoves + 1;
-
-
-        //if hit: numPlayerHits = numPlayerHits + 1;
-
-        currentTurn.setText("Computer's Turn");
-        turn = 1;
-        AIMove();
+        else{ //a miss
+            hitTile = (ImageView) findViewById(tileID);
+            path = "drawable/miss";
+            res = getResources().getIdentifier(path, null, getPackageName());
+            hitTile.setBackground(getResources().getDrawable(res, null));
+            //play sound
+            currentTurn.setText("Computer's Turn");
+            turn = 1;
+            AIMove();
+        }
     }
 
     public void AIMove() {
@@ -509,8 +550,6 @@ public class GameBoard extends AppCompatActivity {
 
     //endGame ends the game "properly" or when one of the players lose all their ships
     public void endGame(String winner){
-        //MOVE TO RESULTS SCREEN
-        ongoing = false;
         //store score;
         globalInfo.setPlayerMoves(numPlayerMoves);
         globalInfo.setPlayerHits(numPlayerHits);
