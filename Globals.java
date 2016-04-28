@@ -14,6 +14,7 @@ public class Globals extends Application {
         private int turn = 0, playerMoves = 0, playerHits = 0; //0 for player, 1 for AI
         private Ship [] player_Ships;
         private Ship [] AI_ships;
+        private String winner;
 
         final private int [] SHIPLIST = {2, 3, 3, 4, 4}; //types of ships both player and CPU have
 
@@ -55,6 +56,11 @@ public class Globals extends Application {
         return AI_ships;
     }
 
+    public String getWinner() {
+        return winner;
+    }
+
+
     public void setVolumeOn(boolean setV){
         this.volume = setV;
     }
@@ -85,6 +91,10 @@ public class Globals extends Application {
 
     public void setAIships(Ship[] AI_ships) {
         this.AI_ships = AI_ships;
+    }
+
+    public void setWinner(String winner) {
+        this.winner = winner;
     }
 
 

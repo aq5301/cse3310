@@ -12,10 +12,9 @@ import android.widget.TextView;
 public class GameBoard extends AppCompatActivity {
 
     Globals globalInfo;
-    //carry on PLAYER and COMPUTER matrices
 
     final Handler AIhandler = new Handler();
-    int turn;
+    int turn, playerRemaining, AIRemaining;
     int numPlayerMoves;
     int numPlayerHits;
     TextView currentTurn;
@@ -31,6 +30,7 @@ public class GameBoard extends AppCompatActivity {
 
         globalInfo = (Globals) getApplication();
         turn = 0; hitTiles = new Boolean[65];
+        playerRemaining = 5; AIRemaining = 5;
         playerShips = globalInfo.getPlayerShips();
         AIShips = globalInfo.getAIships();
 
@@ -476,12 +476,13 @@ public class GameBoard extends AppCompatActivity {
             return;
         }
         hitTiles[tileNum] = true;
-        
+
         //by default, this is a miss; the for loops will check if it is a hit
         Boolean isHit = false, sink = false; String path; int res;
         ImageView hitTile;
         int numberHits;
         numPlayerMoves = numPlayerMoves + 1;
+
         //loop through the AIShip list; then loop through the Tile array of each individual ship
         for(int findTile = 0; findTile < 5; findTile++){
             selectedShip = AIShips[findTile];
@@ -493,6 +494,7 @@ public class GameBoard extends AppCompatActivity {
                     if(AIShips[findTile].getNumHits() == AIShips[findTile].getType()){ //if #hits = ship type, it is sunk
                         AIShips[findTile].setSunk(true);
                         sink = true;
+                        AIRemaining--;
                         //set # AI ships sunk on game board: increment number by 1
                     }
                     continue;
@@ -507,11 +509,14 @@ public class GameBoard extends AppCompatActivity {
 
         if(isHit){
             hitTile = (ImageView) findViewById(tileID);
-            path = "drawable/threeship";
+            path = "drawable/threeship"; //CHANGE TO HIT GRAPHIC
             res = getResources().getIdentifier(path, null, getPackageName());
             hitTile.setBackground(getResources().getDrawable(res, null));
             //play sound
-            if(sink){
+            if(AIRemaining <= 0){
+                endGame("You Win!");
+            }
+            else if(sink){
                 currentTurn.setText("Computer's Turn");
                 turn = 1;
                 AIMove();
@@ -550,9 +555,10 @@ public class GameBoard extends AppCompatActivity {
 
     //endGame ends the game "properly" or when one of the players lose all their ships
     public void endGame(String winner){
-        //store score;
+        globalInfo.setWinner(winner);
         globalInfo.setPlayerMoves(numPlayerMoves);
         globalInfo.setPlayerHits(numPlayerHits);
+
         Intent Quit = new Intent(GameBoard.this, Results.class);
         GameBoard.this.startActivity(Quit);
     }
