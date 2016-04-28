@@ -1,6 +1,7 @@
 package com.example.ashley.battleship;
 
 import android.content.Intent;
+import android.media.Image;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
@@ -8,6 +9,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import org.w3c.dom.Text;
 
 public class GameBoard extends AppCompatActivity {
 
@@ -512,15 +515,14 @@ public class GameBoard extends AppCompatActivity {
                         AIShips[findTile].setSunk(true);
                         sink = true;
                         AIRemaining--;
+                        updateScore(5 - AIRemaining);
                         //set # AI ships sunk on game board: increment number by 1
                     }
-                    continue;
+
                 }
             }
             if(isHit){
                 numPlayerHits = numPlayerHits + 1;
-                continue;
-
             }
         }
 
@@ -568,6 +570,12 @@ public class GameBoard extends AppCompatActivity {
             }
         }, 1000);
 
+    }
+
+
+    public void updateScore(int score){
+        TextView pScore = (TextView) findViewById(R.id.ssunk);
+        pScore.setText("Ships Sunk: " + score);
     }
 
     //endGame ends the game "properly" or when one of the players lose all their ships

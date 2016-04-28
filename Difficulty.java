@@ -21,7 +21,6 @@ public class Difficulty extends AppCompatActivity {
         Button setMenu = (Button) findViewById(R.id.set3);
         Button setEasy = (Button) findViewById(R.id.easy);
         Button setNorm = (Button) findViewById(R.id.normal);
-        Button setHard = (Button) findViewById(R.id.hard);
 
         setMenu.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -42,12 +41,7 @@ public class Difficulty extends AppCompatActivity {
                 global.setDifficulty(1);
             }
         });
-        /*setHard.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                //mode = "Hard";
-            }
-        });*/
+
 
     }
 
