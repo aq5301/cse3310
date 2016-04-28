@@ -8,50 +8,61 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.example.ashley.battleship.SettingMenu"
-    android:background="@android:color/background_light">
+    >
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Volume"
         android:id="@+id/vol"
+        android:clickable="true"
+        android:backgroundTint="#425195"
+        android:textColor="#ffffff"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:clickable="true"
-        android:backgroundTint="#ab402f"
-        android:textColor="#e7f207" />
+        android:layout_marginTop="61dp"/>
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Graphics"
         android:id="@+id/graph"
-        android:layout_below="@+id/vol"
-        android:layout_centerHorizontal="true"
         android:clickable="true"
-        android:backgroundTint="#ab402f"
-        android:textColor="#e7f207" />
+        android:backgroundTint="#425195"
+        android:textColor="#ffffff"
+        android:layout_below="@+id/vol"
+        android:layout_centerHorizontal="true"/>
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Difficulty"
         android:id="@+id/diff"
-        android:layout_below="@+id/graph"
-        android:layout_centerHorizontal="true"
         android:clickable="true"
-        android:backgroundTint="#ab402f"
-        android:textColor="#e7f207" />
+        android:backgroundTint="#425195"
+        android:textColor="#ffffff"
+        android:layout_below="@+id/graph"
+        android:layout_centerHorizontal="true"/>
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Back to Main Menu"
         android:id="@+id/return_mm"
-        android:layout_below="@+id/diff"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="43dp"
         android:clickable="true"
-        android:backgroundTint="#ab402f"
-        android:textColor="#e7f207" />
+        android:backgroundTint="#425195"
+        android:textColor="#ffffff"
+        android:layout_below="@+id/diff"
+        android:layout_centerHorizontal="true"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Settings Menu"
+        android:id="@+id/title"
+        android:textSize="36dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:textStyle="bold"/>
 </RelativeLayout>

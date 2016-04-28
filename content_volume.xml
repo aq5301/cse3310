@@ -17,21 +17,22 @@
         android:layout_height="wrap_content"
         android:text="Sound Off"
         android:id="@+id/soundOff"
-        android:background="#ab402f"
-        android:textColor="#e7f207"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
+        android:clickable="true"
+        android:backgroundTint="#425195"
+        android:textColor="#ffffff"
+        android:layout_centerHorizontal="true"
+        android:layout_above="@+id/soundOn"/>
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Sound On"
         android:id="@+id/soundOn"
-        android:background="#ab402f"
-        android:textColor="#e7f207"
-        android:layout_below="@+id/soundOff"
-        android:layout_alignStart="@+id/soundOff"
-        android:layout_marginTop="35dp" />
+        android:clickable="true"
+        android:backgroundTint="#425195"
+        android:textColor="#ffffff"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"/>
 
     <Button
         android:layout_width="wrap_content"
@@ -39,9 +40,20 @@
         android:text="Back to Settings"
         android:id="@+id/set"
         android:clickable="true"
-        android:backgroundTint="#ab402f"
-        android:textColor="#e7f207"
-        android:layout_below="@+id/soundOn"
+        android:backgroundTint="#425195"
+        android:textColor="#ffffff"
+        android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="68dp" />
+        android:layout_marginBottom="34dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Volume Menu"
+        android:id="@+id/titlev"
+        android:textSize="36dp"
+        android:textStyle="bold"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"/>
 </RelativeLayout>

@@ -19,13 +19,21 @@
         />
 
     <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="350dp"
+        android:id="@+id/imageView"
+        android:background="#0d112e"
+        android:layout_alignStart="@+id/canStart"
+        android:layout_alignBottom="@+id/current_Ship"/>
+
+    <ImageView
         android:layout_width="150dp"
         android:layout_height="100dp"
         android:id="@+id/current_Ship"
         android:background="@drawable/twoship"
-        android:layout_above="@+id/canStart"
-        android:layout_alignStart="@+id/canStart"
-        android:layout_marginBottom="45dp"/>
+        android:layout_alignParentTop="true"
+        android:layout_toEndOf="@+id/imageView"
+        android:layout_marginTop="46dp"/>
 
     <TextView
         android:layout_width="wrap_content"

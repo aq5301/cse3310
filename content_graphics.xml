@@ -18,11 +18,10 @@
         android:text="Monochrome"
         android:id="@+id/mono"
         android:clickable="true"
-        android:backgroundTint="#ab402f"
-        android:textColor="#e7f207"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="34dp" />
+        android:backgroundTint="#425195"
+        android:textColor="#ffffff"
+        android:layout_above="@+id/color"
+        android:layout_centerHorizontal="true"/>
 
     <Button
         android:layout_width="wrap_content"
@@ -30,10 +29,10 @@
         android:text="Color"
         android:id="@+id/color"
         android:clickable="true"
-        android:backgroundTint="#ab402f"
-        android:textColor="#e7f207"
-        android:layout_below="@+id/mono"
-        android:layout_centerHorizontal="true" />
+        android:backgroundTint="#425195"
+        android:textColor="#ffffff"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"/>
 
     <Button
         android:layout_width="wrap_content"
@@ -41,9 +40,20 @@
         android:text="Back to Settings"
         android:id="@+id/set2"
         android:clickable="true"
-        android:backgroundTint="#ab402f"
-        android:textColor="#e7f207"
+        android:backgroundTint="#425195"
+        android:textColor="#ffffff"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="34dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Graphics Menu"
+        android:id="@+id/titleg"
+        android:textSize="36dp"
+        android:textStyle="bold"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"/>
 </RelativeLayout>
