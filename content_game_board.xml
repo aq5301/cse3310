@@ -25,19 +25,18 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="[Current Turn]"
         android:id="@+id/ongoing_turn"
-        android:layout_marginTop="37dp"
-        android:layout_below="@+id/include2"
-        android:layout_alignLeft="@+id/include2"
-        android:layout_alignStart="@+id/include2"
+        android:layout_marginTop="41dp"
         android:layout_marginLeft="42dp"
-        android:layout_marginStart="42dp" />
+        android:layout_marginStart="41dp"
+        android:layout_below="@+id/include2"
+        android:layout_alignStart="@+id/include2"/>
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Quit"
         android:id="@+id/quit"
-        android:layout_below="@+id/ongoing_turn"
-        android:layout_alignEnd="@+id/ongoing_turn"/>
+        android:layout_alignParentBottom="true"
+        android:layout_alignEnd="@+id/include2"/>
 
 </RelativeLayout>
