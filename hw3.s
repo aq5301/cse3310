@@ -100,9 +100,9 @@ generate:
     
     ADD R3, R5, R0
     STR R3, [R2]
-    MOV R3, #0
+    @MOV R3, #0
     ADD R3, R5, R0
-    MOV R4, #0
+    @MOV R4, #0
     ADD R4, R3, #1
     @NEG R3, R4
     STR R4, [R2, #+1]
