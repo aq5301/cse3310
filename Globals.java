@@ -13,7 +13,6 @@ public class Globals extends Application {
         private int difficulty = 1; //0 for easy
         private int turn = 0, playerMoves = 0, playerHits = 0; //0 for player, 1 for AI
         private Ship [] player_Ships;
-        private Ship [] AI_ships;
         private String winner;
 
         final private int [] SHIPLIST = {2, 3, 3, 4, 4}; //types of ships both player and CPU have
@@ -52,9 +51,6 @@ public class Globals extends Application {
         return player_Ships;
     }
 
-    public Ship[] getAIships() {
-        return AI_ships;
-    }
 
     public String getWinner() {
         return winner;
@@ -87,10 +83,6 @@ public class Globals extends Application {
 
     public void setPlayerShips(Ship[] playerShipsR) {
         this.player_Ships = playerShipsR;
-    }
-
-    public void setAIships(Ship[] AI_ships) {
-        this.AI_ships = AI_ships;
     }
 
     public void setWinner(String winner) {

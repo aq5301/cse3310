@@ -18,28 +18,35 @@ public class GameBoard extends AppCompatActivity {
 
     final Handler AIhandler = new Handler();
     int turn, playerRemaining, AIRemaining;
+    AI computer;
     int numPlayerMoves;
     int numPlayerHits;
+    int AIhitTile;
     TextView currentTurn;
     Ship [] playerShips;
     Ship [] AIShips;
     Boolean [] hitTiles;
+    Boolean [] hitTilesAI;
     Ship selectedShip;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game_board);
-
+        ////AI and globals
         globalInfo = (Globals) getApplication();
+        computer = new AI(this, globalInfo);
+        /////misc values
         turn = 0; hitTiles = new Boolean[65];
+        hitTilesAI = new Boolean[65];
         playerRemaining = 5; AIRemaining = 5;
+        //////Player and AI ships
         playerShips = globalInfo.getPlayerShips();
-        AIShips = globalInfo.getAIships();
-
+        AIShips = computer.placeships();
+        ////set up player moves, hits
         numPlayerMoves = globalInfo.getPlayerMoves();
         numPlayerHits = globalInfo.getPlayerHits();
-
+        ////interface
         drawPlayerGrid();
 
         currentTurn = (TextView) findViewById(R.id.ongoing_turn);
@@ -554,12 +561,46 @@ public class GameBoard extends AppCompatActivity {
         }
     }
 
+    public Boolean AICheckMove(int targetTile){
+        if(hitTilesAI[targetTile]){ //tile cannot be selected more than once
+            return false;
+        }
+        else
+        {
+            AIhitTile = targetTile;
+            hitTilesAI[targetTile] = true;
+            return true;
+        }
+
+    }
+
     public void AIMove() {
+        Boolean isHitAI;
+        Boolean sink = false; String path; int res;
+        ImageView hitTile;
+        isHitAI = computer.makemove();
+        int tileNum = AIhitTile, tileID;
+        String tilePiece = "Tile" + tileNum + "s";
+        tileID = getResources().getIdentifier(tilePiece, "id", getPackageName());
 
+        if(isHitAI){
+            hitTile = (ImageView) findViewById(tileID);
+            path = "drawable/threeship"; //CHANGE TO HIT GRAPHIC
+            res = getResources().getIdentifier(path, null, getPackageName());
+            hitTile.setBackground(getResources().getDrawable(res, null));
+            //play sound
+            if(playerRemaining <= 0){
+                endGame("Computer Win!");
+            }
 
-
-
-
+        }
+        else{ //a miss
+            hitTile = (ImageView) findViewById(tileID);
+            path = "drawable/miss";
+            res = getResources().getIdentifier(path, null, getPackageName());
+            hitTile.setBackground(getResources().getDrawable(res, null));
+            //play sound
+        }
 
         AIhandler.postDelayed(new Runnable() {
             @Override

@@ -8,6 +8,7 @@ import android.graphics.Point;
 public class Ship {
 
     int tiles[];
+    int hitTiles[];
     int type; // 2, 3, 4- cells
     int arrange; // 0 = horizontal, 1 = vertical, or in case of 2-cell, the next tile goes to the right
     int numHits = 0;
@@ -41,6 +42,10 @@ public class Ship {
         return numHits;
     }
 
+    public int[] getHitTiles() {
+        return hitTiles;
+    }
+
 
     public void setSunk(Boolean sunk){
         this.sunk = sunk;
@@ -49,6 +54,11 @@ public class Ship {
     public void setNumHits(int numHits) {
         this.numHits = numHits;
     }
+
+    public void setHitTiles(int[] hitTiles) {
+        this.hitTiles = hitTiles;
+    }
+
 }
 
 
