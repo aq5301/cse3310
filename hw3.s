@@ -8,7 +8,7 @@ main:
     BL scanint 
     MOV R5, R0
     MOV R0, #0
-    MOV R6, #0 @ inrement for outside loop of the sort
+    MOV R6, #0 @ increment for outside loop of the sort
     B generate	
 
    
@@ -26,7 +26,39 @@ prompt:
     MOV PC, LR
 
 read_arrays:
-
+    CMP R0, #20 @R0 is index
+    BEQ exit
+    
+    LDR R1, =a
+    LSL R2, R0, #2
+    ADD R2, R1, R2
+    LDR R3, =b
+    LSL R4, R0, #2
+    ADD R4, R3, R4
+    
+    LDR R1, [R2] @ a value
+    LDR R3, [R4] @ b value
+    
+    PUSH {R0}
+    PUSH {R1}
+    PUSH {R2}
+    PUSH {R3}
+    
+    MOV R2, R1
+    MOV R1, R0
+    
+    BL print
+    
+    POP {R3}
+    POP {R2}
+    POP {R1}
+    POP {R0}
+    
+    ADD R0, R0, #1
+    
+    
+    B read_arrays
+    
 
 
 print:
@@ -37,7 +69,7 @@ print:
 
 
 generate:
-    CMP R0, #20
+    CMP R0, #20 
     BEQ sort_ascending
     LDR R1, =a
     LSL R2, R0, #2
@@ -57,7 +89,9 @@ generate:
 
 sort_ascending:
     CMP R6, #20
-    BEQ exit
+    MOVEQ R0, #0
+    CMP R6, #20
+    BEQ read_arrays
     
     LDR R1, =a
     LDR R3, =b
