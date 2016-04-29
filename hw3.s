@@ -72,7 +72,7 @@ print:
     POP {PC}
 
 readloop:
-    CMP R0, #100            @ check to see if we are done iterating
+    CMP R0, #20            @ check to see if we are done iterating
     BEQ exit          @ exit loop if done
     LDR R1, =a              @ get address of a
     LSL R2, R0, #2          @ multiply index*4 to get array offset
