@@ -535,9 +535,9 @@ public class GameBoard extends AppCompatActivity {
 
         if(isHit){
             hitTile = (ImageView) findViewById(tileID);
-            path = "drawable/threeship"; //CHANGE TO HIT GRAPHIC
+            path = "drawable/ship1placeholder"; //CHANGE TO HIT GRAPHIC
             res = getResources().getIdentifier(path, null, getPackageName());
-            hitTile.setBackground(getResources().getDrawable(res, null));
+            hitTile.setForeground(getResources().getDrawable(res, null));
             //play sound
             if(AIRemaining <= 0){
                 endGame("You Win!");
@@ -553,7 +553,7 @@ public class GameBoard extends AppCompatActivity {
             hitTile = (ImageView) findViewById(tileID);
             path = "drawable/miss";
             res = getResources().getIdentifier(path, null, getPackageName());
-            hitTile.setBackground(getResources().getDrawable(res, null));
+            hitTile.setForeground(getResources().getDrawable(res, null));
             //play sound
             currentTurn.setText("Computer's Turn");
             turn = 1;
@@ -585,15 +585,16 @@ public class GameBoard extends AppCompatActivity {
 
         if(isHitAI){
             hitTile = (ImageView) findViewById(tileID);
-            path = "drawable/threeship"; //CHANGE TO HIT GRAPHIC
+            path = "drawable/ship1placeholder"; //CHANGE TO HIT GRAPHIC
             res = getResources().getIdentifier(path, null, getPackageName());
-            hitTile.setBackground(getResources().getDrawable(res, null));
+            hitTile.setForeground(getResources().getDrawable(res, null));
             //play sound
 
             for(int findTile1 = 0; findTile1 < 5; findTile1++){
                 for(int findTile2 = 0; findTile2 < playerShips[findTile1].getTiles().length; findTile2++){
                     if(AIhitTile == playerShips[findTile1].getTiles()[findTile2]){
-                        playerShips[findTile1].getHitTiles()[AIhits++] = AIhitTile;
+                        playerShips[findTile1].getHitTiles()[AIhits] = AIhitTile;
+                        AIhits++;
                         playerShips[findTile1].setNumHits(playerShips[findTile1].getNumHits() + 1);
                         if(playerShips[findTile1].getNumHits() == playerShips[findTile1].getType()){
                             playerShips[findTile1].setSunk(true);
@@ -611,7 +612,7 @@ public class GameBoard extends AppCompatActivity {
             hitTile = (ImageView) findViewById(tileID);
             path = "drawable/miss";
             res = getResources().getIdentifier(path, null, getPackageName());
-            hitTile.setBackground(getResources().getDrawable(res, null));
+            hitTile.setForeground(getResources().getDrawable(res, null));
             //play sound
         }
 
