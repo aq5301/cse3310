@@ -100,12 +100,11 @@ generate:
     
     ADD R3, R5, R0
     STR R3, [R2]
-    
+    MOV R3, #0
     ADD R3, R5, R0
     ADD R4, R3, #1
     NEG R3, R4
-    ADD R2, R2, #1
-    STR R3, [R2]
+    STR R3, [R2, #+1]
     
     ADD R0, R0, #2
     B generate
