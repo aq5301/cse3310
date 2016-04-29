@@ -104,8 +104,8 @@ generate:
     ADD R3, R5, R0
     MOV R4, #0
     ADD R4, R3, #1
-    NEG R3, R4
-    STR R3, [R2, #+1]
+    @NEG R3, R4
+    STR R4, [R2, #+1]
     
     ADD R0, R0, #2
     B generate
