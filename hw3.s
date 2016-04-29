@@ -92,7 +92,8 @@ readloop:
     
 generate:
     CMP R0, #20 
-    BEQ sort_ascending
+    MOVEQ R0, #0
+    BEQ readloop
     LDR R1, =a
     LSL R2, R0, #2
     ADD R2, R1, R2
