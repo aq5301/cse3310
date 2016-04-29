@@ -20,13 +20,13 @@ public class GameBoard extends AppCompatActivity {
     int turn, playerRemaining, AIRemaining;
     AI computer;
     int numPlayerMoves;
-    int numPlayerHits;
+    int numPlayerHits, AIhits;
     int AIhitTile;
     TextView currentTurn;
     Ship [] playerShips;
     Ship [] AIShips;
-    Boolean [] hitTiles;
-    Boolean [] hitTilesAI;
+    boolean [] hitTiles;
+    boolean [] hitTilesAI;
     Ship selectedShip;
 
     @Override
@@ -37,8 +37,8 @@ public class GameBoard extends AppCompatActivity {
         globalInfo = (Globals) getApplication();
         computer = new AI(this, globalInfo);
         /////misc values
-        turn = 0; hitTiles = new Boolean[65];
-        hitTilesAI = new Boolean[65];
+        turn = 0; hitTiles = new boolean[65]; AIhits = 0;
+        hitTilesAI = new boolean[65];
         playerRemaining = 5; AIRemaining = 5;
         //////Player and AI ships
         playerShips = globalInfo.getPlayerShips();
@@ -505,7 +505,7 @@ public class GameBoard extends AppCompatActivity {
         hitTiles[tileNum] = true;
 
         //by default, this is a miss; the for loops will check if it is a hit
-        Boolean isHit = false, sink = false; String path; int res;
+        boolean isHit = false, sink = false; String path; int res;
         ImageView hitTile;
         int numberHits;
         numPlayerMoves = numPlayerMoves + 1;
@@ -561,7 +561,7 @@ public class GameBoard extends AppCompatActivity {
         }
     }
 
-    public Boolean AICheckMove(int targetTile){
+    public boolean AICheckMove(int targetTile){
         if(hitTilesAI[targetTile]){ //tile cannot be selected more than once
             return false;
         }
@@ -575,8 +575,8 @@ public class GameBoard extends AppCompatActivity {
     }
 
     public void AIMove() {
-        Boolean isHitAI;
-        Boolean sink = false; String path; int res;
+        boolean isHitAI;
+        String path; int res;
         ImageView hitTile;
         isHitAI = computer.makemove();
         int tileNum = AIhitTile, tileID;
@@ -589,6 +589,19 @@ public class GameBoard extends AppCompatActivity {
             res = getResources().getIdentifier(path, null, getPackageName());
             hitTile.setBackground(getResources().getDrawable(res, null));
             //play sound
+
+            for(int findTile1 = 0; findTile1 < 5; findTile1++){
+                for(int findTile2 = 0; findTile2 < playerShips[findTile1].getTiles().length; findTile2++){
+                    if(AIhitTile == playerShips[findTile1].getTiles()[findTile2]){
+                        playerShips[findTile1].getHitTiles()[AIhits++] = AIhitTile;
+                        playerShips[findTile1].setNumHits(playerShips[findTile1].getNumHits() + 1);
+                        if(playerShips[findTile1].getNumHits() == playerShips[findTile1].getType()){
+                            playerShips[findTile1].setSunk(true);
+                            playerRemaining--;
+                        }
+                    }
+                }
+            }
             if(playerRemaining <= 0){
                 endGame("Computer Win!");
             }
