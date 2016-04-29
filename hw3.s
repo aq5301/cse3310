@@ -43,10 +43,10 @@ generate:
     LSL R2, R0, #2
     ADD R2, R1, R2
     
-    ADD R3, R5, R0
-    STR R3, [R2]
+    ADD R7, R5, R0
+    STR R7, [R2]
     @MOV R3, #0
-    ADD R3, R5, R0
+    ADD R7, R5, R0
     @MOV R4, #0
     @ADD R4, R3, #1
     @NEG R3, R4
