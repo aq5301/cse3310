@@ -16,7 +16,45 @@ exit:
     MOV R7, #1         
     SWI 0               
 
-
+readloop:
+    CMP R0, #20            @ check to see if we are done iterating
+    BEQ exit          @ exit loop if done
+    LDR R1, =a              @ get address of a
+    LSL R2, R0, #2          @ multiply index*4 to get array offset
+    ADD R2, R1, R2          @ R2 now has the element address
+    LDR R1, [R2]            @ read the array at address 
+    PUSH {R0}               @ backup register before printf
+    PUSH {R1}               @ backup register before printf
+    PUSH {R2}               @ backup register before printf
+    MOV R2, R1              @ move array value to R2 for printf
+    MOV R1, R0              @ move array index to R1 for printf
+    BL  _printf             @ branch to print procedure with return
+    POP {R2}                @ restore register
+    POP {R1}                @ restore register
+    POP {R0}                @ restore register
+    ADD R0, R0, #1          @ increment index
+    B   readloop            @ branch to next loop iteration
+    
+generate:
+    CMP R0, #20 
+    MOVEQ R0, #0
+    BEQ readloop
+    LDR R1, =a
+    LSL R2, R0, #2
+    ADD R2, R1, R2
+    
+    ADD R3, R5, R0
+    STR R3, [R2]
+    @MOV R3, #0
+    ADD R3, R5, R0
+    @MOV R4, #0
+    @ADD R4, R3, #1
+    @NEG R3, R4
+    MOV R4, #3
+    STR R4, [R2, #+1]
+    
+    ADD R0, R0, #2
+    B generate
 prompt:
     MOV R7, #4
     MOV R0, #1
@@ -71,45 +109,7 @@ print:
     BL printf
     POP {PC}
 
-readloop:
-    CMP R0, #20            @ check to see if we are done iterating
-    BEQ exit          @ exit loop if done
-    LDR R1, =a              @ get address of a
-    LSL R2, R0, #2          @ multiply index*4 to get array offset
-    ADD R2, R1, R2          @ R2 now has the element address
-    LDR R1, [R2]            @ read the array at address 
-    PUSH {R0}               @ backup register before printf
-    PUSH {R1}               @ backup register before printf
-    PUSH {R2}               @ backup register before printf
-    MOV R2, R1              @ move array value to R2 for printf
-    MOV R1, R0              @ move array index to R1 for printf
-    BL  _printf             @ branch to print procedure with return
-    POP {R2}                @ restore register
-    POP {R1}                @ restore register
-    POP {R0}                @ restore register
-    ADD R0, R0, #1          @ increment index
-    B   readloop            @ branch to next loop iteration
-    
-generate:
-    CMP R0, #20 
-    MOVEQ R0, #0
-    BEQ readloop
-    LDR R1, =a
-    LSL R2, R0, #2
-    ADD R2, R1, R2
-    
-    ADD R3, R5, R0
-    STR R3, [R2]
-    @MOV R3, #0
-    ADD R3, R5, R0
-    @MOV R4, #0
-    @ADD R4, R3, #1
-    @NEG R3, R4
-    MOV R4, #3
-    STR R4, [R2, #+1]
-    
-    ADD R0, R0, #2
-    B generate
+
 
 
 sort_ascending:
