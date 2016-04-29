@@ -20,7 +20,7 @@ exit:
 prompt:
     MOV R7, #4
     MOV R0, #1
-    MOV R2, #19
+    MOV R2, #18
     LDR R1, =prompt_str
     SWI 0
     MOV PC, LR
@@ -104,7 +104,8 @@ generate:
     ADD R3, R5, R0
     ADD R4, R3, #1
     NEG R3, R4
-    STR R3, [R2, +#1]
+    ADD R2, R2, #1
+    STR R3, [R2]
     
     ADD R0, R0, #2
     B generate
