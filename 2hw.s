@@ -11,25 +11,19 @@ main:
 
 
 generate:
-    CMP R0, #20 
+    CMP R0, #20            @ check to see if we are done iterating
     MOVEQ R0, #0
-    BEQ readloop
-    LDR R1, =a
-    LSL R2, R0, #2
-    ADD R2, R1, R2
+    BEQ readloop          @ exit loop if done
+    LDR R1, =a              @ get address of a
+    LSL R2, R0, #2          @ multiply index*4 to get array offset
+    ADD R2, R1, R2          @ R2 now has the element address
     
-  @  ADD R3, R5, R0
     MOV R3, #3
-    STR R3, [R2]
-    @MOV R3, #0
-    @ADD R3, R5, R0
-    @MOV R4, #0
-    @ADD R4, R3, #1
-    @NEG R3, R4
+    STR R3, [R2]            @ write the address of a[i] to a[i]
     MOV R4, #4
     STR R4, [R2, #+1]
     
-    ADD R0, R0, #2
+    ADD R0, R0, #1          @ increment index
     B generate
     
 readloop:
