@@ -32,13 +32,14 @@ generate:
 next:
     MOV R6, #0
     MOV R7, #0
+        
+    LDR R1, =a
+    LDR R3, =b
 
 sort_ascending:
     CMP R6, #20
     BEQ next2
-    
-    LDR R1, =a
-    LDR R3, =b
+
     LSL R2, R6, #2 @ for array a
     ADD R2, R1, R2
     LSL R4, R6, #2 @ for array b
