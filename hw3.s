@@ -65,7 +65,12 @@ sort_ascendingInner:
     LDR R10, [R8] @ this is index + 1
 
     CMP R11, R10
+    MOVGE R12, R11
     MOVGE R11, R10
+    MOVGE R10, R11
+    
+    STR R11, [R2]
+    STR R10, [R8]
 
     ADD R7, R7, #1
     B sort_ascendingInner
