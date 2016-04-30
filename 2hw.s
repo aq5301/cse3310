@@ -45,14 +45,6 @@ readloop:
     ADD R0, R0, #1          @ increment index
     B   readloop            @ branch to next loop iteration    
     
-prompt:
-    MOV R7, #4
-    MOV R0, #1
-    MOV R2, #18
-    LDR R1, =prompt_str
-    SWI 0
-    MOV PC, LR
-   
 
 exit:   
     MOV R7, #1         
@@ -71,8 +63,4 @@ _printf:
 
 .balign 4
 a:              .skip       80
-b:              .skip       80
-num_str:        .asciz      "%d"
-print_str:      .asciz      "array_a[%d] = %d, array_b = %d\n"
-prompt_str:     .ascii      "Enter an integer.\n"
 printf_str:     .asciz      "a[%d] = %d\n"
