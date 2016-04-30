@@ -32,8 +32,7 @@ generate:
 next:
     MOV R6, #0
     MOV R7, #0
-    MOV R12, #20
-    
+
 sort_ascending:
     CMP R6, #20
     BEQ next2
@@ -48,17 +47,16 @@ sort_ascending:
     ADD R7, R7, #1
     BL moveToSort
     MOV R7, #0
-    SUB R12, R12, #1
     STR R11, [R4] @ store value from 'sort_ascendingInner' into index i of array b
     
     ADD R6, R6, #1
     B sort_ascending
 
 moveToSort:
-    ADD R7, R7, R6
+    MOV R7, #0
     
 sort_ascendingInner:
-    CMP R7, R12
+    CMP R7, #20
     MOVEQ PC, LR
     LSL R8, R7, #2 @ a
     ADD R8, R1, R8
