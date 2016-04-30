@@ -9,13 +9,16 @@ writeloop:
     LDR R1, =a              @ get address of a
     LSL R2, R0, #2          @ multiply index*4 to get array offset
     ADD R2, R1, R2          @ R2 now has the element address
-    MOV R3, #3
-    STR R3, [R2]            @ write the address of a[i] to a[i]
-    MOV R4, #4
-    ADD R5, R0, #1
-    LSL R2, R5, #2
+    
+    ADD R3, R5, R0
+    STR R3, [R2]          
+    ADD R4, R3, #1
+    NEG R3, R4
+
+    ADD R6, R0, #1
+    LSL R2, R6, #2
     ADD R2, R1, R2
-    STR R4, [R2]
+    STR R3, [R2]
 
     ADD R0, R0, #2          @ increment index
     B   writeloop           @ branch to next loop iteration
