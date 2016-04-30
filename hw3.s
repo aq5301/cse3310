@@ -9,9 +9,6 @@ main:
     MOV R5, R0
     MOV R0, #0
     MOV R6, #0 @ increment for outside loop of the sort
-    B generate	
-
-   
 exit:   
     MOV R7, #1         
     SWI 0               
@@ -24,17 +21,16 @@ generate:
     LDR R1, =a
     LSL R2, R0, #2
     ADD R2, R1, R2
-    
-  @  ADD R3, R5, R0
-    MOV R3, #3
-    STR R3, [R2]
-    @MOV R3, #0
+
     ADD R3, R5, R0
-    @MOV R4, #0
-    @ADD R4, R3, #1
-    @NEG R3, R4
-    MOV R4, #3
-    STR R4, [R2, #+1]
+    STR R3, [R2]          
+    ADD R4, R3, #1
+    NEG R3, R4
+
+    ADD R6, R0, #1
+    LSL R2, R6, #2
+    ADD R2, R1, R2
+    STR R3, [R2]
     
     ADD R0, R0, #2
     B generate
