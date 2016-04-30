@@ -67,7 +67,7 @@ sort_ascendingInner:
     B sort_ascendingInner
 
 next2:
-    MOVE R0, #0
+    MOV R0, #0
     
 read_arrays:
     CMP R0, #20 @R0 is index
