@@ -17,7 +17,7 @@ writeloop:
     ADD R2, R1, R2
     STR R4, [R2]
 
-    ADD R0, R0, #1          @ increment index
+    ADD R0, R0, #2          @ increment index
     B   writeloop           @ branch to next loop iteration
 writedone:
     MOV R0, #0              @ initialze index variable
