@@ -3,6 +3,7 @@
    
 main:
     MOV R0, #0              @ initialze index variable
+    MOV R5, #3
 writeloop:
     CMP R0, #20           @ check to see if we are done iterating
     BEQ writedone           @ exit loop if done
