@@ -68,7 +68,7 @@ sort_ascendingInner:
     CMP R11, R10
     MOVGE R12, R11
     MOVGE R11, R10
-    MOVGE R10, R11
+    MOVGE R10, R12
     
     STR R11, [R2]
     STR R10, [R8]
