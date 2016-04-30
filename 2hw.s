@@ -6,7 +6,7 @@
 main:
     @BL prompt
     @BL scanint
-    MOV R5, R0
+    @MOV R5, R0
     MOV R0, #0
 
 
@@ -22,7 +22,7 @@ generate:
     MOV R3, #3
     STR R3, [R2]
     @MOV R3, #0
-    ADD R3, R5, R0
+    @ADD R3, R5, R0
     @MOV R4, #0
     @ADD R4, R3, #1
     @NEG R3, R4
@@ -59,15 +59,6 @@ prompt:
     SWI 0
     MOV PC, LR
    
-scanint:
-    MOV R4, LR              
-    SUB SP, SP, #4          
-    LDR R0, =num_str     
-    MOV R1, SP              
-    BL scanf                
-    LDR R0, [SP]            
-    ADD SP, SP, #4          
-    MOV PC, R4  
 
 exit:   
     MOV R7, #1         
