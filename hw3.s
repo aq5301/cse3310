@@ -8,16 +8,10 @@ main:
     BL scanint 
     MOV R5, R0
     MOV R0, #0
-    MOV R6, #0 @ increment for outside loop of the sort
-exit:   
-    MOV R7, #1         
-    SWI 0               
-
-
+              
 generate:
     CMP R0, #20 
-    MOVEQ R0, #0
-    BEQ sort_ascending
+    BEQ next
     LDR R1, =a
     LSL R2, R0, #2
     ADD R2, R1, R2
@@ -34,14 +28,47 @@ generate:
     
     ADD R0, R0, #2
     B generate
-prompt:
-    MOV R7, #4
-    MOV R0, #1
-    MOV R2, #18
-    LDR R1, =prompt_str
-    SWI 0
-    MOV PC, LR
+    
+next:
+    MOV R6, #0
+sort_ascending:
+    CMP R6, #20
+    BEQ next2
+    
+    LDR R1, =a
+    LDR R3, =b
+    LSL R2, R6, #2 @ for array a
+    ADD R2, R1, R2
+    LSL R4, R6, #2 @ for array b
+    ADD R4, R3, R4
+    
+    ADD R7, R6, #1
+    BL sort_ascendingInner
+    STR R0, [R4] @ store value from 'sort_ascendingInner' into index i of array b
+    
+    ADD R6, R6, #1
+    B sort_ascending
 
+
+sort_ascendingInner:
+    CMP R7, #20
+    MOVEQ R0, R11
+    CMP R7, #20
+    MOVEQ PC, LR
+    LSL R8, R7, #2 @ a
+    ADD R8, R1, R8
+    
+    LDR R10, [R8] @ this is index + 1
+    LDR R11, [R2] @ this is index
+    CMP R11, R10
+    MOVGE R11, R10
+
+    ADD R7, R7, #1
+    B sort_ascendingInner
+
+next2:
+    MOVE R0, #0
+    
 read_arrays:
     CMP R0, #20 @R0 is index
     BEQ exit
@@ -76,52 +103,23 @@ read_arrays:
     
     B read_arrays
     
+    
+exit:   
+    MOV R7, #1         
+    SWI 0 
 print:
     PUSH {LR}
     LDR R0, =print_str
     BL printf
     POP {PC}
 
-
-
-
-sort_ascending:
-    CMP R6, #20
-    MOVEQ R0, #0
-    CMP R6, #20
-    BEQ read_arrays
-    
-    LDR R1, =a
-    LDR R3, =b
-    LSL R2, R6, #2 @ for array a
-    ADD R2, R1, R2
-    LSL R4, R6, #2 @ for array b
-    ADD R4, R3, R4
-    
-    ADD R7, R6, #1
-    BL sort_ascendingInner
-    STR R0, [R4] @ store value from 'sort_ascendingInner' into index i of array b
-    
-    ADD R6, R6, #1
-    B sort_ascending
-
-
-sort_ascendingInner:
-    CMP R7, #20
-    MOVEQ R0, R11
-    CMP R7, #20
-    MOVEQ PC, LR
-    LSL R8, R7, #2 @ a
-    ADD R8, R1, R8
-    
-    LDR R10, [R8] @ this is index + 1
-    LDR R11, [R2] @ this is index
-    CMP R11, R10
-    MOVGE R11, R10
-
-    ADD R7, R7, #1
-    B sort_ascendingInner
-
+prompt:
+    MOV R7, #4
+    MOV R0, #1
+    MOV R2, #18
+    LDR R1, =prompt_str
+    SWI 0
+    MOV PC, LR
 
 scanint:
     MOV R4, LR              
