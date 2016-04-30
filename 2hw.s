@@ -4,8 +4,8 @@
    
    
 main:
-    BL prompt
-    BL scanint
+    @BL prompt
+    @BL scanint
     MOV R5, R0
     MOV R0, #0
 
@@ -26,7 +26,7 @@ generate:
     @MOV R4, #0
     @ADD R4, R3, #1
     @NEG R3, R4
-    MOV R4, #3
+    MOV R4, #4
     STR R4, [R2, #+1]
     
     ADD R0, R0, #2
