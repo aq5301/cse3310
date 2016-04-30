@@ -11,8 +11,7 @@ writeloop:
     ADD R2, R1, R2          @ R2 now has the element address
     MOV R3, #3
     STR R3, [R2]            @ write the address of a[i] to a[i]
-    MOV R4, #4
-    STR R4, [R2,+#1]
+
     ADD R0, R0, #1          @ increment index
     B   writeloop           @ branch to next loop iteration
 writedone:
