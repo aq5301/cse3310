@@ -48,7 +48,6 @@ sort_ascending:
     ADD R7, R7, #1
     BL moveToSort
     MOV R7, #0
-    STR R11, [R4] @ store value from 'sort_ascendingInner' into index i of array b
     
     ADD R6, R6, #1
     B sort_ascending
@@ -79,15 +78,33 @@ sort_ascendingInner:
 next2:
     MOV R0, #0
     
+aTob:
+    CMP R0, #20
+    BEQ next3
+    LSL R2, R6, #2 @ for array a
+    ADD R2, R1, R2
+    LSL R4, R6, #2 @ for array b
+    ADD R4, R3, R4
+    
+    LDR R5, [R2]
+    STR R5, [R4]
+    
+    ADD R0, R0, #1
+    B aTob
+    
+    
+next3:
+    BL generate
+    MOV R0, #0
+    
 read_arrays:
     CMP R0, #20 @R0 is index
     BEQ exit
     
-    LDR R1, =a
-    LSL R2, R0, #2
+    LSL R2, R0, #2 @a
     ADD R2, R1, R2
-    LDR R3, =b
-    LSL R4, R0, #2
+
+    LSL R4, R0, #2 @b
     ADD R4, R3, R4
     
     LDR R1, [R2] @ a value
