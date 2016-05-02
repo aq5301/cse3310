@@ -1,6 +1,7 @@
 package com.example.ashley.battleship;
 
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.media.Image;
 import android.os.Bundle;
 import android.os.Handler;
@@ -20,14 +21,14 @@ public class GameBoard extends AppCompatActivity {
     int turn, playerRemaining, AIRemaining;
     AI computer;
     int numPlayerMoves;
-    int numPlayerHits, AIhits;
+    int numPlayerHits;
+    int [] AIHits;
     int AIhitTile;
     TextView currentTurn;
     Ship [] playerShips;
     Ship [] AIShips;
     boolean [] hitTiles;
     boolean [] hitTilesAI;
-    Ship selectedShip;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,17 +36,17 @@ public class GameBoard extends AppCompatActivity {
         setContentView(R.layout.activity_game_board);
         ////AI and globals
         globalInfo = (Globals) getApplication();
-        computer = new AI(this, globalInfo);
+        computer = new AI(this, this.globalInfo);
         /////misc values
-        turn = 0; hitTiles = new boolean[65]; AIhits = 0;
+        turn = 0; hitTiles = new boolean[65]; AIHits = new int[5];
         hitTilesAI = new boolean[65];
         playerRemaining = 5; AIRemaining = 5;
         //////Player and AI ships
         playerShips = globalInfo.getPlayerShips();
         AIShips = computer.placeships();
         ////set up player moves, hits
-        numPlayerMoves = globalInfo.getPlayerMoves();
-        numPlayerHits = globalInfo.getPlayerHits();
+        numPlayerMoves = 0;
+        numPlayerHits = 0;
         ////interface
         drawPlayerGrid();
 
@@ -62,6 +63,29 @@ public class GameBoard extends AppCompatActivity {
 
             }
         });
+
+        if(!globalInfo.getGraphics()){ //if monochrome
+            String tpName = "Tile", mPath = "drawable/emptym";; int r, id; Drawable imag;
+            ImageView current;
+            for(int i = 1; i < 65; i++){
+                tpName = tpName + i;
+                id = getResources().getIdentifier(tpName, "id", getPackageName());
+                current = (ImageView) findViewById(id);
+                r = getResources().getIdentifier(mPath, null, getPackageName());
+                imag = getResources().getDrawable(r, null);
+                current.setForeground(imag);
+
+                tpName = tpName + "s";
+                id = getResources().getIdentifier(tpName, "id", getPackageName());
+                current = (ImageView) findViewById(id);
+                r = getResources().getIdentifier(mPath, null, getPackageName());
+                imag = getResources().getDrawable(r, null);
+                current.setForeground(imag);
+
+                tpName = tpName.substring(0,4);
+            }
+        }
+
     }
 
     public void drawPlayerGrid(){
@@ -76,6 +100,9 @@ public class GameBoard extends AppCompatActivity {
                    id = getResources().getIdentifier(tileS, "id", getPackageName());
                    currentTile = (ImageView) findViewById(id);
                    tilePath = "drawable/shipendpiece";
+                   if(!globalInfo.getGraphics()){
+                       tilePath = tilePath + "m";
+                   }
                    tileRe = getResources().getIdentifier(tilePath, null, getPackageName());
                    currentTile.setForeground(getResources().getDrawable(tileRe, null));
                    ///
@@ -84,6 +111,9 @@ public class GameBoard extends AppCompatActivity {
                    id = getResources().getIdentifier(tileS, "id", getPackageName());
                    currentTile = (ImageView) findViewById(id);
                    tilePath = "drawable/shipendpiece";
+                   if(!globalInfo.getGraphics()){
+                       tilePath = tilePath + "m";
+                   }
                    tileRe = getResources().getIdentifier(tilePath, null, getPackageName());
                    currentTile.setForeground(getResources().getDrawable(tileRe, null));
                    currentTile.setScaleX(-1.0f);
@@ -93,6 +123,9 @@ public class GameBoard extends AppCompatActivity {
                    id = getResources().getIdentifier(tileS, "id", getPackageName());
                    currentTile = (ImageView) findViewById(id);
                    tilePath = "drawable/shipendpiece";
+                   if(!globalInfo.getGraphics()){
+                       tilePath = tilePath + "m";
+                   }
                    tileRe = getResources().getIdentifier(tilePath, null, getPackageName());
                    currentTile.setForeground(getResources().getDrawable(tileRe, null));
                    currentTile.setScaleX(-1.0f);
@@ -102,6 +135,9 @@ public class GameBoard extends AppCompatActivity {
                    id = getResources().getIdentifier(tileS, "id", getPackageName());
                    currentTile = (ImageView) findViewById(id);
                    tilePath = "drawable/shipendpiece";
+                   if(!globalInfo.getGraphics()){
+                       tilePath = tilePath + "m";
+                   }
                    tileRe = getResources().getIdentifier(tilePath, null, getPackageName());
                    currentTile.setForeground(getResources().getDrawable(tileRe, null));
 
@@ -114,6 +150,9 @@ public class GameBoard extends AppCompatActivity {
                    id = getResources().getIdentifier(tileS, "id", getPackageName());
                    currentTile = (ImageView) findViewById(id);
                    tilePath = "drawable/shipmidsection";
+                   if(!globalInfo.getGraphics()){
+                       tilePath = tilePath + "m";
+                   }
                    tileRe = getResources().getIdentifier(tilePath, null, getPackageName());
                    currentTile.setForeground(getResources().getDrawable(tileRe, null));
                    currentTile.setRotation(90f);
@@ -123,6 +162,9 @@ public class GameBoard extends AppCompatActivity {
                    id = getResources().getIdentifier(tileS, "id", getPackageName());
                    currentTile = (ImageView) findViewById(id);
                    tilePath = "drawable/shipendpiece";
+                   if(!globalInfo.getGraphics()){
+                       tilePath = tilePath + "m";
+                   }
                    tileRe = getResources().getIdentifier(tilePath, null, getPackageName());
                    currentTile.setForeground(getResources().getDrawable(tileRe, null));
                    currentTile.setRotation(90f);
@@ -132,6 +174,9 @@ public class GameBoard extends AppCompatActivity {
                    id = getResources().getIdentifier(tileS, "id", getPackageName());
                    currentTile = (ImageView) findViewById(id);
                    tilePath = "drawable/shipendpiece";
+                   if(!globalInfo.getGraphics()){
+                       tilePath = tilePath + "m";
+                   }
                    tileRe = getResources().getIdentifier(tilePath, null, getPackageName());
                    currentTile.setForeground(getResources().getDrawable(tileRe, null));
                    currentTile.setScaleX(-1.0f);
@@ -142,6 +187,9 @@ public class GameBoard extends AppCompatActivity {
                    id = getResources().getIdentifier(tileS, "id", getPackageName());
                    currentTile = (ImageView) findViewById(id);
                    tilePath = "drawable/shipmidsection";
+                   if(!globalInfo.getGraphics()){
+                       tilePath = tilePath + "m";
+                   }
                    tileRe = getResources().getIdentifier(tilePath, null, getPackageName());
                    currentTile.setForeground(getResources().getDrawable(tileRe, null));
                    /////
@@ -150,6 +198,9 @@ public class GameBoard extends AppCompatActivity {
                    id = getResources().getIdentifier(tileS, "id", getPackageName());
                    currentTile = (ImageView) findViewById(id);
                    tilePath = "drawable/shipendpiece";
+                   if(!globalInfo.getGraphics()){
+                       tilePath = tilePath + "m";
+                   }
                    tileRe = getResources().getIdentifier(tilePath, null, getPackageName());
                    currentTile.setForeground(getResources().getDrawable(tileRe, null));
                    /////
@@ -158,6 +209,9 @@ public class GameBoard extends AppCompatActivity {
                    id = getResources().getIdentifier(tileS, "id", getPackageName());
                    currentTile = (ImageView) findViewById(id);
                    tilePath = "drawable/shipendpiece";
+                   if(!globalInfo.getGraphics()){
+                       tilePath = tilePath + "m";
+                   }
                    tileRe = getResources().getIdentifier(tilePath, null, getPackageName());
                    currentTile.setForeground(getResources().getDrawable(tileRe, null));
                    currentTile.setScaleX(-1.0f);
@@ -171,6 +225,9 @@ public class GameBoard extends AppCompatActivity {
                    id = getResources().getIdentifier(tileS, "id", getPackageName());
                    currentTile = (ImageView) findViewById(id);
                    tilePath = "drawable/shipmidsection";
+                   if(!globalInfo.getGraphics()){
+                       tilePath = tilePath + "m";
+                   }
                    tileRe = getResources().getIdentifier(tilePath, null, getPackageName());
                    currentTile.setForeground(getResources().getDrawable(tileRe, null));
                    currentTile.setRotation(90f);
@@ -180,6 +237,9 @@ public class GameBoard extends AppCompatActivity {
                    id = getResources().getIdentifier(tileS, "id", getPackageName());
                    currentTile = (ImageView) findViewById(id);
                    tilePath = "drawable/shipendpiece";
+                   if(!globalInfo.getGraphics()){
+                       tilePath = tilePath + "m";
+                   }
                    tileRe = getResources().getIdentifier(tilePath, null, getPackageName());
                    currentTile.setForeground(getResources().getDrawable(tileRe, null));
                    currentTile.setRotation(90f);
@@ -189,6 +249,9 @@ public class GameBoard extends AppCompatActivity {
                    id = getResources().getIdentifier(tileS, "id", getPackageName());
                    currentTile = (ImageView) findViewById(id);
                    tilePath = "drawable/shipmidsection";
+                   if(!globalInfo.getGraphics()){
+                       tilePath = tilePath + "m";
+                   }
                    tileRe = getResources().getIdentifier(tilePath, null, getPackageName());
                    currentTile.setForeground(getResources().getDrawable(tileRe, null));
                    currentTile.setRotation(90f);
@@ -198,6 +261,9 @@ public class GameBoard extends AppCompatActivity {
                    id = getResources().getIdentifier(tileS, "id", getPackageName());
                    currentTile = (ImageView) findViewById(id);
                    tilePath = "drawable/shipendpiece";
+                   if(!globalInfo.getGraphics()){
+                       tilePath = tilePath + "m";
+                   }
                    tileRe = getResources().getIdentifier(tilePath, null, getPackageName());
                    currentTile.setForeground(getResources().getDrawable(tileRe, null));
                    currentTile.setScaleX(-1.0f);
@@ -209,6 +275,9 @@ public class GameBoard extends AppCompatActivity {
                    id = getResources().getIdentifier(tileS, "id", getPackageName());
                    currentTile = (ImageView) findViewById(id);
                    tilePath = "drawable/shipmidsection";
+                   if(!globalInfo.getGraphics()){
+                       tilePath = tilePath + "m";
+                   }
                    tileRe = getResources().getIdentifier(tilePath, null, getPackageName());
                    currentTile.setForeground(getResources().getDrawable(tileRe, null));
 
@@ -218,6 +287,9 @@ public class GameBoard extends AppCompatActivity {
                    id = getResources().getIdentifier(tileS, "id", getPackageName());
                    currentTile = (ImageView) findViewById(id);
                    tilePath = "drawable/shipendpiece";
+                   if(!globalInfo.getGraphics()){
+                       tilePath = tilePath + "m";
+                   }
                    tileRe = getResources().getIdentifier(tilePath, null, getPackageName());
                    currentTile.setForeground(getResources().getDrawable(tileRe, null));
 
@@ -227,6 +299,9 @@ public class GameBoard extends AppCompatActivity {
                    id = getResources().getIdentifier(tileS, "id", getPackageName());
                    currentTile = (ImageView) findViewById(id);
                    tilePath = "drawable/shipmidsection";
+                   if(!globalInfo.getGraphics()){
+                       tilePath = tilePath + "m";
+                   }
                    tileRe = getResources().getIdentifier(tilePath, null, getPackageName());
                    currentTile.setForeground(getResources().getDrawable(tileRe, null));
 
@@ -236,6 +311,9 @@ public class GameBoard extends AppCompatActivity {
                    id = getResources().getIdentifier(tileS, "id", getPackageName());
                    currentTile = (ImageView) findViewById(id);
                    tilePath = "drawable/shipendpiece";
+                   if(!globalInfo.getGraphics()){
+                       tilePath = tilePath + "m";
+                   }
                    tileRe = getResources().getIdentifier(tilePath, null, getPackageName());
                    currentTile.setForeground(getResources().getDrawable(tileRe, null));
                    currentTile.setScaleX(-1.0f);
@@ -505,14 +583,13 @@ public class GameBoard extends AppCompatActivity {
         hitTiles[tileNum] = true;
 
         //by default, this is a miss; the for loops will check if it is a hit
-        boolean isHit = false, sink = false; String path; int res;
+        boolean isHit = false; String path; int res;
         ImageView hitTile;
         int numberHits;
-        numPlayerMoves = numPlayerMoves + 1;
+        numPlayerMoves++;
 
         //loop through the AIShip list; then loop through the Tile array of each individual ship
         for(int findTile = 0; findTile < 5; findTile++){
-            selectedShip = AIShips[findTile];
             for(int findTile2 = 0; findTile2 < AIShips[findTile].getTiles().length; findTile2++){
                 if(tileNum == AIShips[findTile].getTiles()[findTile2]){
                     isHit = true;
@@ -520,7 +597,6 @@ public class GameBoard extends AppCompatActivity {
                     AIShips[findTile].setNumHits(numberHits);
                     if(AIShips[findTile].getNumHits() == AIShips[findTile].getType()){ //if #hits = ship type, it is sunk
                         AIShips[findTile].setSunk(true);
-                        sink = true;
                         AIRemaining--;
                         updateScore(5 - AIRemaining);
                         //set # AI ships sunk on game board: increment number by 1
@@ -528,30 +604,33 @@ public class GameBoard extends AppCompatActivity {
 
                 }
             }
-            if(isHit){
-                numPlayerHits = numPlayerHits + 1;
-            }
         }
 
         if(isHit){
             hitTile = (ImageView) findViewById(tileID);
             path = "drawable/ship1placeholder"; //CHANGE TO HIT GRAPHIC
+            if(!globalInfo.getGraphics()){
+                path = path + "m";
+            }
             res = getResources().getIdentifier(path, null, getPackageName());
             hitTile.setForeground(getResources().getDrawable(res, null));
             //play sound
             if(AIRemaining <= 0){
+                numPlayerHits++;
                 endGame("You Win!");
             }
-            else if(sink){
-                currentTurn.setText("Computer's Turn");
-                turn = 1;
-                AIMove();
-            }
+            numPlayerHits++;
+            currentTurn.setText("Computer's Turn");
+            turn = 1;
+            AIMove();
 
         }
         else{ //a miss
             hitTile = (ImageView) findViewById(tileID);
             path = "drawable/miss";
+            if(!globalInfo.getGraphics()){
+                path = path + "m";
+            }
             res = getResources().getIdentifier(path, null, getPackageName());
             hitTile.setForeground(getResources().getDrawable(res, null));
             //play sound
@@ -583,9 +662,13 @@ public class GameBoard extends AppCompatActivity {
         String tilePiece = "Tile" + tileNum + "s";
         tileID = getResources().getIdentifier(tilePiece, "id", getPackageName());
 
+
         if(isHitAI){
             hitTile = (ImageView) findViewById(tileID);
             path = "drawable/ship1placeholder"; //CHANGE TO HIT GRAPHIC
+            if(!globalInfo.getGraphics()){
+                path = path + "m";
+            }
             res = getResources().getIdentifier(path, null, getPackageName());
             hitTile.setForeground(getResources().getDrawable(res, null));
             //play sound
@@ -593,8 +676,8 @@ public class GameBoard extends AppCompatActivity {
             for(int findTile1 = 0; findTile1 < 5; findTile1++){
                 for(int findTile2 = 0; findTile2 < playerShips[findTile1].getTiles().length; findTile2++){
                     if(AIhitTile == playerShips[findTile1].getTiles()[findTile2]){
-                        playerShips[findTile1].getHitTiles()[AIhits] = AIhitTile;
-                        AIhits++;
+                        playerShips[findTile1].getHitTiles()[AIHits[findTile1]] = AIhitTile; //where the shot landed
+                        AIHits[findTile1] = AIHits[findTile1] + 1;
                         playerShips[findTile1].setNumHits(playerShips[findTile1].getNumHits() + 1);
                         if(playerShips[findTile1].getNumHits() == playerShips[findTile1].getType()){
                             playerShips[findTile1].setSunk(true);
@@ -611,10 +694,15 @@ public class GameBoard extends AppCompatActivity {
         else{ //a miss
             hitTile = (ImageView) findViewById(tileID);
             path = "drawable/miss";
+            if(!globalInfo.getGraphics()){
+                path = path + "m";
+            }
             res = getResources().getIdentifier(path, null, getPackageName());
             hitTile.setForeground(getResources().getDrawable(res, null));
             //play sound
         }
+
+
 
         AIhandler.postDelayed(new Runnable() {
             @Override

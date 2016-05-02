@@ -33,6 +33,27 @@ public class ShipPlacement extends AppCompatActivity {
                     checkShip[fillBool] = false;
                 }
 
+                if(!g.getGraphics()){
+                    String tpName = "Tile", mPath = "drawable/emptym"; int r, id; Drawable imag;
+                    ImageView current;
+                    for(int i = 1; i < 65; i++){
+                        tpName = tpName + i;
+                        id = getResources().getIdentifier(tpName, "id", getPackageName());
+                        current = (ImageView) findViewById(id);
+                        r = getResources().getIdentifier(mPath, null, getPackageName());
+                        imag = getResources().getDrawable(r, null);
+                        current.setForeground(imag);
+                        tpName = tpName.substring(0,4);
+                    }
+
+                    mPath = "drawable/twoshipm";
+                    r = getResources().getIdentifier(mPath, null, getPackageName());
+                    imag = getResources().getDrawable(r, null);
+                    current = (ImageView) findViewById(R.id.current_Ship);
+                    current.setForeground(imag);
+                }
+
+
         }
 
         //when all ships are placed down, the Start Game button can be pressed
@@ -59,23 +80,35 @@ public class ShipPlacement extends AppCompatActivity {
             currentShip = (ImageView) findViewById(R.id.current_Ship);
             if(currentType == 1){ //3-cell horiz
                 path = "drawable/threeship";
+                if(!g.getGraphics()){
+                    path = path + "m";
+                }
                 res = getResources().getIdentifier(path, null, getPackageName());
                 currentShip.setBackground(getResources().getDrawable(res, null));
             }
             else if(currentType == 2){ //3-cell vert
                 path = "drawable/threeship";
+                if(!g.getGraphics()){
+                    path = path + "m";
+                }
                 res = getResources().getIdentifier(path, null, getPackageName());
                 currentShip.setBackground(getResources().getDrawable(res, null));
                 currentShip.setRotation(90f);
             }
             else if(currentType == 3){ //4-cell horiz
                 path = "drawable/fourship";
+                if(!g.getGraphics()){
+                    path = path + "m";
+                }
                 res = getResources().getIdentifier(path, null, getPackageName());
                 currentShip.setBackground(getResources().getDrawable(res, null));
                 currentShip.setRotation(0f);
             }
             else if (currentType == 4){ //4-cell vert
                 path = "drawable/fourship";
+                if(!g.getGraphics()){
+                    path = path + "m";
+                }
                 res = getResources().getIdentifier(path, null, getPackageName());
                 currentShip.setBackground(getResources().getDrawable(res, null));
                 currentShip.setRotation(90f);
@@ -361,6 +394,9 @@ public class ShipPlacement extends AppCompatActivity {
                                 currentPiece = (ImageView) findViewById(id);
 
                                 tileP = "drawable/shipendpiece";
+                                if(!g.getGraphics()){
+                                    tileP = tileP + "m";
+                                }
                                 tileR = getResources().getIdentifier(tileP, null, getPackageName());
                                 image = getResources().getDrawable(tileR, null);
                                 currentPiece.setForeground(image);
@@ -371,6 +407,9 @@ public class ShipPlacement extends AppCompatActivity {
                                 currentPiece = (ImageView) findViewById(ID);
 
                                 tileP = "drawable/shipendpiece";
+                                if(!g.getGraphics()){
+                                    tileP = tileP + "m";
+                                }
                                 tileR = getResources().getIdentifier(tileP, null, getPackageName());
                                 image = getResources().getDrawable(tileR, null);
                                 currentPiece.setForeground(image);
@@ -396,6 +435,9 @@ public class ShipPlacement extends AppCompatActivity {
                             currentPiece = (ImageView) findViewById(id);
 
                             tileP = "drawable/shipendpiece";
+                            if(!g.getGraphics()){
+                                tileP = tileP + "m";
+                            }
                             tileR = getResources().getIdentifier(tileP, null, getPackageName());
                             image = getResources().getDrawable(tileR, null);
                             currentPiece.setForeground(image);
@@ -406,6 +448,9 @@ public class ShipPlacement extends AppCompatActivity {
                             currentPiece = (ImageView) findViewById(ID);
 
                             tileP = "drawable/shipendpiece";
+                            if(!g.getGraphics()){
+                                tileP = tileP + "m";
+                            }
                             tileR = getResources().getIdentifier(tileP, null, getPackageName());
                             image = getResources().getDrawable(tileR, null);
                             currentPiece.setForeground(image);
@@ -437,6 +482,9 @@ public class ShipPlacement extends AppCompatActivity {
                                 currentPiece = (ImageView) findViewById(id);
 
                                 tileP = "drawable/shipmidsection";
+                                if(!g.getGraphics()){
+                                    tileP = tileP + "m";
+                                }
                                 tileR = getResources().getIdentifier(tileP, null, getPackageName());
                                 image = getResources().getDrawable(tileR, null);
                                 currentPiece.setForeground(image);
@@ -446,6 +494,9 @@ public class ShipPlacement extends AppCompatActivity {
                                 currentPiece = (ImageView) findViewById(ID);
 
                                 tileP = "drawable/shipendpiece";
+                                if(!g.getGraphics()){
+                                    tileP = tileP + "m";
+                                }
                                 tileR = getResources().getIdentifier(tileP, null, getPackageName());
                                 image = getResources().getDrawable(tileR, null);
                                 currentPiece.setForeground(image);
@@ -455,6 +506,9 @@ public class ShipPlacement extends AppCompatActivity {
                                 currentPiece = (ImageView) findViewById(ID);
 
                                 tileP = "drawable/shipendpiece";
+                                if(!g.getGraphics()){
+                                    tileP = tileP + "m";
+                                }
                                 tileR = getResources().getIdentifier(tileP, null, getPackageName());
                                 image = getResources().getDrawable(tileR, null);
                                 currentPiece.setForeground(image);
@@ -493,6 +547,9 @@ public class ShipPlacement extends AppCompatActivity {
                                 currentPiece = (ImageView) findViewById(id);
 
                                 tileP = "drawable/shipmidsection";
+                                if(!g.getGraphics()){
+                                    tileP = tileP + "m";
+                                }
                                 tileR = getResources().getIdentifier(tileP, null, getPackageName());
                                 image = getResources().getDrawable(tileR, null);
                                 currentPiece.setForeground(image);
@@ -503,6 +560,9 @@ public class ShipPlacement extends AppCompatActivity {
                                 currentPiece = (ImageView) findViewById(ID);
 
                                 tileP = "drawable/shipendpiece";
+                                if(!g.getGraphics()){
+                                    tileP = tileP + "m";
+                                }
                                 tileR = getResources().getIdentifier(tileP, null, getPackageName());
                                 image = getResources().getDrawable(tileR, null);
                                 currentPiece.setForeground(image);
@@ -513,6 +573,9 @@ public class ShipPlacement extends AppCompatActivity {
                                 currentPiece = (ImageView) findViewById(ID);
 
                                 tileP = "drawable/shipendpiece";
+                                if(!g.getGraphics()){
+                                    tileP = tileP + "m";
+                                }
                                 tileR = getResources().getIdentifier(tileP, null, getPackageName());
                                 image = getResources().getDrawable(tileR, null);
                                 currentPiece.setForeground(image);
@@ -552,6 +615,9 @@ public class ShipPlacement extends AppCompatActivity {
                                 currentPiece = (ImageView) findViewById(id);
 
                                 tileP = "drawable/shipmidsection";
+                                if(!g.getGraphics()){
+                                    tileP = tileP + "m";
+                                }
                                 tileR = getResources().getIdentifier(tileP, null, getPackageName());
                                 image = getResources().getDrawable(tileR, null);
                                 currentPiece.setForeground(image);
@@ -561,6 +627,9 @@ public class ShipPlacement extends AppCompatActivity {
                                 currentPiece = (ImageView) findViewById(ID);
 
                                 tileP = "drawable/shipendpiece";
+                                if(!g.getGraphics()){
+                                    tileP = tileP + "m";
+                                }
                                 tileR = getResources().getIdentifier(tileP, null, getPackageName());
                                 image = getResources().getDrawable(tileR, null);
                                 currentPiece.setForeground(image);
@@ -570,6 +639,9 @@ public class ShipPlacement extends AppCompatActivity {
                                 currentPiece = (ImageView) findViewById(ID);
 
                                 tileP = "drawable/shipmidsection";
+                                if(!g.getGraphics()){
+                                    tileP = tileP + "m";
+                                }
                                 tileR = getResources().getIdentifier(tileP, null, getPackageName());
                                 image = getResources().getDrawable(tileR, null);
                                 currentPiece.setForeground(image);
@@ -579,6 +651,9 @@ public class ShipPlacement extends AppCompatActivity {
                                 currentPiece = (ImageView) findViewById(ID);
 
                                 tileP = "drawable/shipendpiece";
+                                if(!g.getGraphics()){
+                                    tileP = tileP + "m";
+                                }
                                 tileR = getResources().getIdentifier(tileP, null, getPackageName());
                                 image = getResources().getDrawable(tileR, null);
                                 currentPiece.setForeground(image);
@@ -615,6 +690,9 @@ public class ShipPlacement extends AppCompatActivity {
                                 currentPiece = (ImageView) findViewById(id);
 
                                 tileP = "drawable/shipmidsection";
+                                if(!g.getGraphics()){
+                                    tileP = tileP + "m";
+                                }
                                 tileR = getResources().getIdentifier(tileP, null, getPackageName());
                                 image = getResources().getDrawable(tileR, null);
                                 currentPiece.setForeground(image);
@@ -625,6 +703,9 @@ public class ShipPlacement extends AppCompatActivity {
                                 currentPiece = (ImageView) findViewById(ID);
 
                                 tileP = "drawable/shipendpiece";
+                                if(!g.getGraphics()){
+                                    tileP = tileP + "m";
+                                }
                                 tileR = getResources().getIdentifier(tileP, null, getPackageName());
                                 image = getResources().getDrawable(tileR, null);
                                 currentPiece.setForeground(image);
@@ -635,6 +716,9 @@ public class ShipPlacement extends AppCompatActivity {
                                 currentPiece = (ImageView) findViewById(ID);
 
                                 tileP = "drawable/shipmidsection";
+                                if(!g.getGraphics()){
+                                    tileP = tileP + "m";
+                                }
                                 tileR = getResources().getIdentifier(tileP, null, getPackageName());
                                 image = getResources().getDrawable(tileR, null);
                                 currentPiece.setForeground(image);
@@ -645,6 +729,9 @@ public class ShipPlacement extends AppCompatActivity {
                                 currentPiece = (ImageView) findViewById(ID);
 
                                 tileP = "drawable/shipendpiece";
+                                if(!g.getGraphics()){
+                                    tileP = tileP + "m";
+                                }
                                 tileR = getResources().getIdentifier(tileP, null, getPackageName());
                                 image = getResources().getDrawable(tileR, null);
                                 currentPiece.setForeground(image);

@@ -66,7 +66,10 @@ public class AI {
                 }
                 else if (typeShip == 3){
                     if(run == 1){ //horiz
-                        if(checkShip[chooseTile - 1] || checkShip[chooseTile + 1] || chooseTile % 8 == 0 || (chooseTile - 1) % 8 == 0) {
+                        if((chooseTile + 1) > 64 || (chooseTile - 1) < 1){
+                            //nothing
+                        }
+                        else if(checkShip[chooseTile - 1] || checkShip[chooseTile + 1] || chooseTile % 8 == 0 || (chooseTile - 1) % 8 == 0) {
                         //check left and right, do nothing
 
                         }
@@ -167,7 +170,7 @@ public class AI {
         boolean success = false;
         int i, j;
         if (targetships.isEmpty()) { // if there are no target ships decide move based on seek mode.
-            if (gInfo.getDifficulty() == 0) {
+            if (gInfo.getDifficulty() == 0) { // easy
                 while (!success) {
                     tileHit = rand.nextInt((64-1) + 1) + 1;
                     success = gameState.AICheckMove(tileHit);
@@ -177,8 +180,8 @@ public class AI {
                         if (tileHit == gameState.playerShips[i].getTiles()[j]) {
                             if (!targetships.contains(gameState.playerShips[i])) {
                                 targetships.add(gameState.playerShips[i]);
-                                return true;
                             }
+                            return true;
                         }
                     }
                 }
@@ -194,8 +197,8 @@ public class AI {
                         if (tileHit == gameState.playerShips[i].getTiles()[j]) {
                             if (!targetships.contains(gameState.playerShips[i])) {
                                 targetships.add(gameState.playerShips[i]);
-                                return true;
                             }
+                            return true;
                         }
                     }
                 }
@@ -207,7 +210,7 @@ public class AI {
                 Ship target = targetships.get(0);
                 int[] holder = target.getHitTiles();
 
-                for (i = 0; i < target.numHits; i++)
+                for (i = 0; i < target.getNumHits(); i++)
                     shipseek.add(holder[i]);
                 if (!(shipseek.size() > 1)) {
                     if (iterator == -1) {
@@ -233,7 +236,7 @@ public class AI {
                             tileHit = (shipseek.get(0) - 1);
                             break;
                     }
-
+                    success = gameState.AICheckMove(tileHit);
                 } else {
                     if (!shipKillWasReversed) {
                         if (!shipKillReverse) {
@@ -274,13 +277,13 @@ public class AI {
                         ArrayList<Integer> hitList = new ArrayList<>();
                         int[] tiles = target.getTiles();
                         ArrayList<Integer> tileList = new ArrayList<>();
-                        for (i = 0; i < target.numHits; i++) {
+                        for (i = 0; i < target.getNumHits(); i++) {
                             hitList.add(hit[i]);
                         }
-                        for (i = 0; i < target.numHits; i++) {
+                        for (i = 0; i < target.getNumHits(); i++) {
                             tileList.add(tiles[i]);
                         }
-                        for (i = 0; i < target.numHits; i++) {
+                        for (i = 0; i < target.getNumHits(); i++) {
                             tileList.remove(hitList.get(i));
                         }
                         tileHit = tileList.get(0);

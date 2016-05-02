@@ -6,12 +6,11 @@ import android.app.Application;
  * Created by Ashley on 4/13/2016.
  */
 
-//Globals class is essential for loading up a previously started game. Must simply make a call for the information here
 public class Globals extends Application {
         private boolean volume = true;
         private boolean colorGraphic = true;
         private int difficulty = 1; //0 for easy
-        private int turn = 0, playerMoves = 0, playerHits = 0; //0 for player, 1 for AI
+        private int turn = 0, playerMoves, playerHits; //0 for player, 1 for AI
         private Ship [] player_Ships;
         private String winner;
 
@@ -31,10 +30,6 @@ public class Globals extends Application {
         return this.difficulty;
     }
 
-    public int getTurn(){
-        return this.turn;
-    }
-
     public int getPlayerMoves(){
         return this.playerMoves;
     }
@@ -51,11 +46,9 @@ public class Globals extends Application {
         return player_Ships;
     }
 
-
     public String getWinner() {
         return winner;
     }
-
 
     public void setVolumeOn(boolean setV){
         this.volume = setV;
@@ -78,7 +71,7 @@ public class Globals extends Application {
     }
 
     public void setPlayerHits(int setPH){
-        this.playerMoves = setPH;
+        this.playerHits = setPH;
     }
 
     public void setPlayerShips(Ship[] playerShipsR) {

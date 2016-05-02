@@ -7,12 +7,12 @@ import android.graphics.Point;
  */
 public class Ship {
 
-    int tiles[];
-    int hitTiles[] = {0,0,0,0};
-    int type; // 2, 3, 4- cells
-    int arrange; // 0 = horizontal, 1 = vertical, or in case of 2-cell, the next tile goes to the right
-    int numHits = 0;
-    Boolean sunk;
+    private int tiles[];
+    private int hitTiles[] = {0,0,0,0};
+    private int type; // 2, 3, 4- cells
+    private int arrange; // 0 = horizontal, 1 = vertical, or in case of 2-cell, the next tile goes to the right
+    private int numHits = 0;
+    private Boolean sunk;
 
 
     //creating a new ship

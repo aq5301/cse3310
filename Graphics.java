@@ -8,15 +8,18 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 public class Graphics extends AppCompatActivity {
 
+
+    Globals global;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_graphics);
 
-        final Globals global = (Globals) getApplication();
+        global = (Globals) getApplication();
 
         Button setMenu = (Button) findViewById(R.id.set2);
         Button monochromeSet = (Button) findViewById(R.id.mono);
@@ -33,14 +36,29 @@ public class Graphics extends AppCompatActivity {
         monochromeSet.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if(!global.getGraphics()){
+                    return;
+                }
+                else{
                     global.setColorGraphics(false);
+                    Toast.makeText(getApplicationContext(), "Monochrome Graphics set.",
+                            Toast.LENGTH_SHORT).show();
+                }
+
             }
         });
 
         colorSet.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if(global.getGraphics()){
+                    return;
+                }
+                else {
                     global.setColorGraphics(true);
+                    Toast.makeText(getApplicationContext(), "Colored Graphics set.",
+                            Toast.LENGTH_SHORT).show();
+                }
             }
         });
     }
