@@ -16,7 +16,8 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
-        />
+        android:background="#425195"
+        android:textColor="#ffffff"/>
 
     <ImageView
         android:layout_width="wrap_content"

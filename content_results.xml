@@ -38,17 +38,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Hit percentage:"
-        android:id="@+id/hit_percent"
-        android:layout_marginTop="35dp"
-        android:layout_below="@+id/num_hits"
-        android:layout_alignStart="@+id/num_hits"
-        android:textStyle="bold"/>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="[WINNER GOES HERE]"
         android:id="@+id/winner"
         android:layout_alignParentTop="true"
@@ -94,16 +83,8 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="[Player hits]"
         android:id="@+id/p_hits"
-        android:layout_above="@+id/hit_percent"
-        android:layout_alignEnd="@+id/p_moves" />
+        android:layout_alignTop="@+id/num_hits"
+        android:layout_alignEnd="@+id/p_moves"/>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="[Hit Percentage]"
-        android:id="@+id/percent"
-        android:layout_alignTop="@+id/hit_percent"
-        android:layout_alignEnd="@+id/winner" />
 
 </RelativeLayout>

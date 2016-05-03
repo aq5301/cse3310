@@ -62,7 +62,7 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="Ships Sunk: 0"
         android:id="@+id/ssunk"
-        android:layout_below="@+id/ongoing_turn"
-        android:layout_alignEnd="@+id/ongoing_turn"/>
+        android:layout_above="@+id/quit"
+        android:layout_toStartOf="@+id/quit"/>
 
 </RelativeLayout>
