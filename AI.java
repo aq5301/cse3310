@@ -21,25 +21,24 @@ public class AI {
         this.gInfo = ginfo;
     }
 
-    public Ship [] placeships() {
-        Ship [] AIship = new Ship[5];
-        int [] shipTypes = gInfo.getSHIPLIST();
-        int [] allTiles;
+    public Ship[] placeships() {
+        Ship[] AIship = new Ship[5];
+        int[] shipTypes = gInfo.getSHIPLIST();
+        int[] allTiles;
         int typeShip;
         boolean[] checkShip = new boolean[65];
         int chooseTile, run = 0;
-        
-        while(run < 5){
-            chooseTile = rand.nextInt((64-1) + 1) + 1;
-            if(checkShip[chooseTile]){
+
+        while (run < 5) {
+            chooseTile = rand.nextInt((64 - 1) + 1) + 1;
+            if (checkShip[chooseTile]) {
                 //do nothing
-            }
-            else{
+            } else {
                 typeShip = shipTypes[run];
-                if(typeShip == 2){
-                    if(chooseTile % 8 == 0) { //check tile to the right for out of bounds
+                if (typeShip == 2) {
+                    if (chooseTile % 8 == 0) { //check tile to the right for out of bounds
                         if ((chooseTile - 1) < 1) { //check tile to the left, if it's out of bounds = do nothing
-                            
+
                         } else {
 
                             checkShip[chooseTile] = true;
@@ -51,8 +50,7 @@ public class AI {
                             AIship[run] = new Ship(allTiles, false, 2, 0);
                             run++;
                         }
-                    }
-                    else{
+                    } else {
                         checkShip[chooseTile] = true;
                         checkShip[chooseTile + 1] = true;
 
@@ -63,17 +61,14 @@ public class AI {
                         run++;
                     }
 
-                }
-                else if (typeShip == 3){
-                    if(run == 1){ //horiz
-                        if((chooseTile + 1) > 64 || (chooseTile - 1) < 1){
+                } else if (typeShip == 3) {
+                    if (run == 1) { //horiz
+                        if ((chooseTile + 1) > 64 || (chooseTile - 1) < 1) {
                             //nothing
-                        }
-                        else if(checkShip[chooseTile - 1] || checkShip[chooseTile + 1] || chooseTile % 8 == 0 || (chooseTile - 1) % 8 == 0) {
-                        //check left and right, do nothing
+                        } else if (checkShip[chooseTile - 1] || checkShip[chooseTile + 1] || chooseTile % 8 == 0 || (chooseTile - 1) % 8 == 0) {
+                            //check left and right, do nothing
 
-                        }
-                        else{
+                        } else {
 
                             checkShip[chooseTile] = true;
                             checkShip[chooseTile - 1] = true;
@@ -87,16 +82,13 @@ public class AI {
                             run++;
                         }
 
-                    }
-                    else{ //vertical
-                        if(chooseTile - 8 <= 0 || chooseTile + 8 > 64) //if top or bottom go out of bounds
+                    } else { //vertical
+                        if (chooseTile - 8 <= 0 || chooseTile + 8 > 64) //if top or bottom go out of bounds
                         {
 
-                        }
-                        else if(checkShip[chooseTile - 8] || checkShip[chooseTile + 8] ) { //check top and bottom
+                        } else if (checkShip[chooseTile - 8] || checkShip[chooseTile + 8]) { //check top and bottom
 
-                        }
-                        else{
+                        } else {
 
                             checkShip[chooseTile] = true;
                             checkShip[chooseTile - 8] = true;
@@ -111,19 +103,16 @@ public class AI {
                         }
                     }
 
-                }
-                else{ //4
-                    if(run == 3){ //horiz
-                        if(chooseTile % 8 == 0 || (chooseTile - 1) % 8 == 0 || (chooseTile + 1) % 8 == 0){ //check out of bounds
+                } else { //4
+                    if (run == 3) { //horiz
+                        if (chooseTile % 8 == 0 || (chooseTile - 1) % 8 == 0 || (chooseTile + 1) % 8 == 0) { //check out of bounds
 
-                        }
-                        else if (checkShip[chooseTile - 1] || checkShip[chooseTile + 1] || checkShip[chooseTile + 2]){ //check to left, two spaces to right
+                        } else if (checkShip[chooseTile - 1] || checkShip[chooseTile + 1] || checkShip[chooseTile + 2]) { //check to left, two spaces to right
 
-                        }
-                        else{
+                        } else {
 
                             checkShip[chooseTile] = true;
-                            checkShip[chooseTile- 1] = true;
+                            checkShip[chooseTile - 1] = true;
                             checkShip[chooseTile + 1] = true;
                             checkShip[chooseTile + 2] = true;
 
@@ -136,8 +125,7 @@ public class AI {
                             run++;
                         }
 
-                    }
-                    else { //vertical
+                    } else { //vertical
                         if ((chooseTile - 8) <= 0 || (chooseTile + 8) > 64 || (chooseTile + 16) > 64) { //check top, bottom two
 
                         } else if (checkShip[chooseTile - 8] || checkShip[chooseTile + 8] || checkShip[chooseTile + 16]) { //check top, bottom two for ships
@@ -159,7 +147,7 @@ public class AI {
                     }
                 }
             }
-            
+
         }
 
         return AIship;
@@ -172,7 +160,7 @@ public class AI {
         if (targetships.isEmpty()) { // if there are no target ships decide move based on seek mode.
             if (gInfo.getDifficulty() == 0) { // easy
                 while (!success) {
-                    tileHit = rand.nextInt((64-1) + 1) + 1;
+                    tileHit = rand.nextInt((64 - 1) + 1) + 1;
                     success = gameState.AICheckMove(tileHit);
                 }
                 for (i = 0; i < 5; i++) {
@@ -209,12 +197,11 @@ public class AI {
                 shipseek = new ArrayList<>();
                 Ship target = targetships.get(0);
                 int[] holder = target.getHitTiles();
-
+                
                 for (i = 0; i < target.getNumHits(); i++) {
-                    if(holder[i] == 0){
+                    if (holder[i] == 0) {
                         //do nothing
-                    }
-                    else{
+                    } else {
                         shipseek.add(holder[i]);
                     }
                 }
@@ -247,7 +234,7 @@ public class AI {
                             break;
                     }
                     success = gameState.AICheckMove(tileHit);
-                    if(success){
+                    if (success) {
                         for (i = 0; i < 5; i++) {
                             for (j = 0; j < gameState.playerShips[i].getType(); j++) {
                                 if (tileHit == gameState.playerShips[i].getTiles()[j]) {
@@ -261,11 +248,11 @@ public class AI {
                         return false;
                     }
                 } else {
-                    if (!shipKillWasReversed) {
+                    if (!(shipseek.size() > 2)) {
                         if (!shipKillReverse) {
                             tileHit = ((shipseek.get(shipseek.size() - 2)) - (shipseek.get(shipseek.size() - 1))) + shipseek.get(shipseek.size() - 2);
                             success = gameState.AICheckMove(tileHit);
-                            if(success) {
+                            if (success) {
                                 for (i = 0; i < 5; i++) {
                                     for (j = 0; j < gameState.playerShips[i].getType(); j++) {
                                         if (tileHit == gameState.playerShips[i].getTiles()[j]) {
@@ -277,8 +264,7 @@ public class AI {
                                     }
                                 }
                                 return false;
-                            }
-                            else {
+                            } else {
                                 tileHit = -((shipseek.get(shipseek.size() - 2)) - (shipseek.get(shipseek.size() - 1))) + shipseek.get(shipseek.size() - 1);
                                 success = gameState.AICheckMove(tileHit);
                                 if (success) {
@@ -331,7 +317,7 @@ public class AI {
                             }
                         }*/
                     } else {
-                        int[] hit = target.getHitTiles();
+                       /* int[] hit = target.getHitTiles();
                         ArrayList<Integer> hitList = new ArrayList<>();
                         int[] tiles = target.getTiles();
                         ArrayList<Integer> tileList = new ArrayList<>();
@@ -343,32 +329,39 @@ public class AI {
                         }
                         for (i = 0; i < target.getNumHits(); i++) {
                             tileList.remove(hitList.get(i));
-                        }
-                        tileHit = tileList.get(0);
+                        }*/
+                        tileHit = -((shipseek.get(shipseek.size() - 3)) - (shipseek.get(shipseek.size() - 2))) + shipseek.get(shipseek.size() - 1);
                         success = gameState.AICheckMove(tileHit);
-                        if(success) {
+                        if (success) {
                             for (i = 0; i < 5; i++) {
                                 for (j = 0; j < gameState.playerShips[i].getType(); j++) {
                                     if (tileHit == gameState.playerShips[i].getTiles()[j]) {
                                         if (!targetships.contains(gameState.playerShips[i])) {
                                             targetships.add(gameState.playerShips[i]);
-                                            return true; //hit
                                         }
+                                        return true; //hit
                                     }
                                 }
+                            }
+                            return false;
+                        } else {
+                            tileHit = ((shipseek.get(shipseek.size() - 2)) - (shipseek.get(shipseek.size() - 1))) + shipseek.get(shipseek.size() - 3);
+                            success = gameState.AICheckMove(tileHit);
+                            if (success) {
                                 for (i = 0; i < 5; i++) {
                                     for (j = 0; j < gameState.playerShips[i].getType(); j++) {
                                         if (tileHit == gameState.playerShips[i].getTiles()[j]) {
                                             if (!targetships.contains(gameState.playerShips[i])) {
                                                 targetships.add(gameState.playerShips[i]);
-                                                return true; //hit
                                             }
+                                            return true; //hit
                                         }
                                     }
                                 }
+                                return false;
                             }
+                            System.out.println("Error");
                         }
-                        return false;
                     }
                 }
             }
