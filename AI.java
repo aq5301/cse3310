@@ -9,7 +9,7 @@ import java.util.*;
  */
 public class AI {
 
-    private ArrayList<Ship> targetships = new ArrayList<>();
+    public ArrayList<Ship> targetships = new ArrayList<>();
     private Random rand = new Random();
     private GameBoard gameState;
     private Globals gInfo;
@@ -210,8 +210,18 @@ public class AI {
                 Ship target = targetships.get(0);
                 int[] holder = target.getHitTiles();
 
-                for (i = 0; i < target.getNumHits(); i++)
-                    shipseek.add(holder[i]);
+                for (i = 0; i < target.getNumHits(); i++) {
+                    if(holder[i] == 0){
+                        //do nothing
+                    }
+                    else{
+                        shipseek.add(holder[i]);
+                    }
+                }
+                Collections.sort(shipseek);
+                Collections.reverse(shipseek);
+
+
                 if (!(shipseek.size() > 1)) {
                     if (iterator == -1) {
                         iterator = rand.nextInt(4);
@@ -237,10 +247,54 @@ public class AI {
                             break;
                     }
                     success = gameState.AICheckMove(tileHit);
+                    if(success){
+                        for (i = 0; i < 5; i++) {
+                            for (j = 0; j < gameState.playerShips[i].getType(); j++) {
+                                if (tileHit == gameState.playerShips[i].getTiles()[j]) {
+                                    if (!targetships.contains(gameState.playerShips[i])) {
+                                        targetships.add(gameState.playerShips[i]);
+                                    }
+                                    return true;
+                                }
+                            }
+                        }
+                        return false;
+                    }
                 } else {
                     if (!shipKillWasReversed) {
                         if (!shipKillReverse) {
-                            tileHit = ((shipseek.size() - 1) - (shipseek.size() - 2));
+                            tileHit = ((shipseek.get(shipseek.size() - 2)) - (shipseek.get(shipseek.size() - 1))) + shipseek.get(shipseek.size() - 2);
+                            success = gameState.AICheckMove(tileHit);
+                            if(success) {
+                                for (i = 0; i < 5; i++) {
+                                    for (j = 0; j < gameState.playerShips[i].getType(); j++) {
+                                        if (tileHit == gameState.playerShips[i].getTiles()[j]) {
+                                            if (!targetships.contains(gameState.playerShips[i])) {
+                                                targetships.add(gameState.playerShips[i]);
+                                            }
+                                            return true;
+                                        }
+                                    }
+                                }
+                                shipKillReverse = true;
+                                return false;
+                            }
+                            /*else {
+                                tileHit = ((shipseek.get(shipseek.size() - 2)) - (shipseek.get(shipseek.size() - 1))) + shipseek.get(shipseek.size() - 2);
+                                success = gameState.AICheckMove(tileHit);
+                                if (success) {
+                                    for (i = 0; i < 5; i++) {
+                                        for (j = 0; j < gameState.playerShips[i].getType(); j++) {
+                                            if (tileHit == gameState.playerShips[i].getTiles()[j]) {
+                                                if (!targetships.contains(gameState.playerShips[i])) {
+                                                    targetships.add(gameState.playerShips[i]);
+                                                }
+                                                return true;
+                                            }
+                                        }
+                                    }
+                                }
+                            }*/
                         } else {
                             switch (iterator) {
                                 case 0:
@@ -259,17 +313,20 @@ public class AI {
                                     tileHit = (shipseek.get(0) + 1);
                                     break;
                             }
-                            shipKillWasReversed = true;
+                            shipKillReverse = false;
                             success = gameState.AICheckMove(tileHit);
-                            for (i = 0; i < 5; i++) {
-                                for (j = 0; j < gameState.playerShips[i].getType(); j++) {
-                                    if (tileHit == gameState.playerShips[i].getTiles()[j]) {
-                                        if (!targetships.contains(gameState.playerShips[i])) {
-                                            targetships.add(gameState.playerShips[i]);
+                            if(success) {
+                                for (i = 0; i < 5; i++) {
+                                    for (j = 0; j < gameState.playerShips[i].getType(); j++) {
+                                        if (tileHit == gameState.playerShips[i].getTiles()[j]) {
+                                            if (!targetships.contains(gameState.playerShips[i])) {
+                                                targetships.add(gameState.playerShips[i]);
+                                            }
                                             return true; //hit
                                         }
                                     }
                                 }
+                                return false;
                             }
                         }
                     } else {
@@ -288,16 +345,7 @@ public class AI {
                         }
                         tileHit = tileList.get(0);
                         success = gameState.AICheckMove(tileHit);
-                        for (i = 0; i < 5; i++) {
-                            for (j = 0; j < gameState.playerShips[i].getType(); j++) {
-                                if (tileHit == gameState.playerShips[i].getTiles()[j]) {
-                                    if (!targetships.contains(gameState.playerShips[i])) {
-                                        targetships.add(gameState.playerShips[i]);
-                                        return true; //hit
-                                    }
-                                }
-                            }
-                            success = gameState.AICheckMove(tileHit);
+                        if(success) {
                             for (i = 0; i < 5; i++) {
                                 for (j = 0; j < gameState.playerShips[i].getType(); j++) {
                                     if (tileHit == gameState.playerShips[i].getTiles()[j]) {
@@ -307,13 +355,24 @@ public class AI {
                                         }
                                     }
                                 }
+                                for (i = 0; i < 5; i++) {
+                                    for (j = 0; j < gameState.playerShips[i].getType(); j++) {
+                                        if (tileHit == gameState.playerShips[i].getTiles()[j]) {
+                                            if (!targetships.contains(gameState.playerShips[i])) {
+                                                targetships.add(gameState.playerShips[i]);
+                                                return true; //hit
+                                            }
+                                        }
+                                    }
+                                }
                             }
                         }
+                        return false;
                     }
                 }
             }
         }
-        return false; //a miss
+        return false; //miss or invalid
     }
 }
 

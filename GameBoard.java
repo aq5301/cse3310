@@ -22,8 +22,8 @@ public class GameBoard extends AppCompatActivity {
     AI computer;
     int numPlayerMoves;
     int numPlayerHits;
-    int [] AIHits;
     int AIhitTile;
+    int [] AIhits;
     TextView currentTurn;
     Ship [] playerShips;
     Ship [] AIShips;
@@ -38,7 +38,7 @@ public class GameBoard extends AppCompatActivity {
         globalInfo = (Globals) getApplication();
         computer = new AI(this, this.globalInfo);
         /////misc values
-        turn = 0; hitTiles = new boolean[65]; AIHits = new int[5];
+        turn = 0; hitTiles = new boolean[65]; AIhits = new int[5];
         hitTilesAI = new boolean[65];
         playerRemaining = 5; AIRemaining = 5;
         //////Player and AI ships
@@ -641,7 +641,10 @@ public class GameBoard extends AppCompatActivity {
     }
 
     public boolean AICheckMove(int targetTile){
-        if(hitTilesAI[targetTile]){ //tile cannot be selected more than once
+        if(targetTile < 1|| targetTile > 64){ //check for out of bounds
+            return false;
+        }
+        else if(hitTilesAI[targetTile]){ //tile cannot be selected more than once
             return false;
         }
         else
@@ -673,14 +676,15 @@ public class GameBoard extends AppCompatActivity {
             hitTile.setForeground(getResources().getDrawable(res, null));
             //play sound
 
-            for(int findTile1 = 0; findTile1 < 5; findTile1++){
+            for(int findTile1 = 0; findTile1 < 5; findTile1++){ //findTile1 = ship in shiplist index
                 for(int findTile2 = 0; findTile2 < playerShips[findTile1].getTiles().length; findTile2++){
-                    if(AIhitTile == playerShips[findTile1].getTiles()[findTile2]){
-                        playerShips[findTile1].getHitTiles()[AIHits[findTile1]] = AIhitTile; //where the shot landed
-                        AIHits[findTile1] = AIHits[findTile1] + 1;
+                    if(AIhitTile == playerShips[findTile1].getTiles()[findTile2]){ //findTile2 refers to a ship's chosen tile index
+                        playerShips[findTile1].getHitTiles()[AIhits[findTile1]] = AIhitTile; //where the shot landed
+                        AIhits[findTile1] = AIhits[findTile1]++; //increments the next index for current ship hit array
                         playerShips[findTile1].setNumHits(playerShips[findTile1].getNumHits() + 1);
                         if(playerShips[findTile1].getNumHits() == playerShips[findTile1].getType()){
                             playerShips[findTile1].setSunk(true);
+                            computer.targetships.remove(playerShips[findTile1]);
                             playerRemaining--;
                         }
                     }
