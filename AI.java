@@ -276,11 +276,10 @@ public class AI {
                                         }
                                     }
                                 }
-                                shipKillReverse = true;
                                 return false;
                             }
-                            /*else {
-                                tileHit = ((shipseek.get(shipseek.size() - 2)) - (shipseek.get(shipseek.size() - 1))) + shipseek.get(shipseek.size() - 2);
+                            else {
+                                tileHit = -((shipseek.get(shipseek.size() - 2)) - (shipseek.get(shipseek.size() - 1))) + shipseek.get(shipseek.size() - 1);
                                 success = gameState.AICheckMove(tileHit);
                                 if (success) {
                                     for (i = 0; i < 5; i++) {
@@ -293,9 +292,11 @@ public class AI {
                                             }
                                         }
                                     }
+                                    return false;
                                 }
-                            }*/
-                        } else {
+                            }
+
+                        } /*else {
                             switch (iterator) {
                                 case 0:
                                     tileHit = (shipseek.get(0) - 8);
@@ -328,7 +329,7 @@ public class AI {
                                 }
                                 return false;
                             }
-                        }
+                        }*/
                     } else {
                         int[] hit = target.getHitTiles();
                         ArrayList<Integer> hitList = new ArrayList<>();
